@@ -1,0 +1,2 @@
+class AdDimensionsController < ApplicationController
+end
