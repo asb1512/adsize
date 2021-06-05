@@ -1,3 +1,3 @@
 class Platform < ApplicationRecord
-  has_many :dimensions
+  has_many :ad_dimensions
 end
