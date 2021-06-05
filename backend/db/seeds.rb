@@ -31,7 +31,7 @@ fb_ad_dimensions = [
 ]
 
 fb_ad_dimensions.each do |ad|
-  e = AdDimension.create(name: ad.name, width: ad.width, height: ad.height)
+  e = AdDimension.create(name: ad[:name], width: ad[:width], height: ad[:height])
   fb = Platform.find_by(name: 'Facebook')
   e.platform = fb
 end
@@ -61,9 +61,10 @@ google_ad_dimensions = [
 ]
 
 google_ad_dimensions.each do |ad|
-  e = AdDimension.create(name: ad.name, width: ad.width, height: ad.height)
+  e = AdDimension.new(name: ad[:name], width: ad[:width], height: ad[:height])
   google = Platform.find_by(name: 'Google')
   e.platform = google
+  e.save
 end
 
 # Creation of Yahoo ad dimensions
