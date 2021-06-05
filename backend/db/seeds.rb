@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+platform_names = [
+  'Facebook',
+  'Google',
+  'Yahoo',
+  'Topple',
+  'Display'
+]
+
+platform_names.each do |name|
+  Platform.create(name: name)
+end
