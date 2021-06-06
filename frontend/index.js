@@ -5,6 +5,10 @@ const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
 
+const isEven = int => {
+  return (int % 2 === 0)
+}
+
 document.addEventListener('DOMContentLoaded', () => onPageLoad())
 
 function onPageLoad() {
@@ -47,7 +51,7 @@ function onPageLoad() {
   // adds 'Select your platform' prompt
   const selectPlatformPrompt = document.createElement('p')
   selectPlatformPrompt.setAttribute('id', 'select-platform-prompt')
-  selectPlatformPrompt.setAttribute('class', 'heading fade-in')
+  selectPlatformPrompt.setAttribute('class', 'heading center fade-in')
   selectPlatformPrompt.innerHTML = 'Select your platform:'
   fadeInXSec(container1, selectPlatformPrompt, 1000)
 
@@ -62,6 +66,14 @@ function onPageLoad() {
   // loads the platform page
 
   const loadPlatforms = () => {
+    adSizeLogo.setAttribute('class', 'fade-out')
+    sleep(removeFromDom, adSizeLogo, 1000)
+    navBar.remove()
+    
+    const thinNavBar = document.createElement('div')
+    thinNavBar.setAttribute('class', 'thin-nav-bar')
+    body.insertBefore(thinNavBar, main)
+
     fetch(PLATFORMS_URL)
     .then(resp => resp.json())
     .then(json => {
@@ -70,9 +82,21 @@ function onPageLoad() {
   }
 
   const renderPlatform = (platform) => {
-    console.log(platform)
-    const div = document.createElement('div')
-    div.setAttribute('class', 'platform-list-item')
+    const platformDiv = document.createElement('div')
+    platformDiv.setAttribute('class', 'platform-list-item-div center')
+
+    const platformP = document.createElement('p')
+    platformP.setAttribute('id', `${platform.id}`)
+    console.log(isEven(2))
+    if (isEven(platform.id)) {
+      platformP.setAttribute('class', 'platform-list-item-p center')
+    } else {
+      platformP.setAttribute('class', 'platform-list-item-p-alt center')
+    }
+    platformP.innerHTML = `${platform.name}`
+
+    main.appendChild(platformDiv)
+    platformDiv.appendChild(platformP)
   }
 
 
