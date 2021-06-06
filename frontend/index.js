@@ -10,13 +10,8 @@ document.addEventListener('DOMContentLoaded', () => onPageLoad())
 function onPageLoad() {
 
   // allows elements to fade in after a specified period of time
-  const fadeIn1Sec = async (parent, child) => {
-    await new Promise(r => setTimeout(r, 1000));
-    parent.appendChild(child)
-  }
-
-  const fadeIn2Sec = async (parent, child) => {
-    await new Promise(r => setTimeout(r, 2000));
+  const fadeInXSec = async (parent, child, milliseconds) => {
+    await new Promise(r => setTimeout(r, milliseconds));
     parent.appendChild(child)
   }
 
@@ -40,12 +35,13 @@ function onPageLoad() {
   selectPlatformPrompt.setAttribute('id', 'select-platform-prompt')
   selectPlatformPrompt.setAttribute('class', 'heading fade-in-image')
   selectPlatformPrompt.innerHTML = 'Select your platform:'
-  fadeIn1Sec(container1, selectPlatformPrompt)
+  fadeInXSec(container1, selectPlatformPrompt, 1000)
 
   // adds 'Select' button
   const selectButton = document.createElement('button')
+  selectButton.setAttribute('class', 'button center')
   selectButton.innerHTML = 'Select'
-  fadeIn2Sec(container2, selectButton)
+  fadeInXSec(container2, selectButton, 2000)
 
   const loadPlatforms = () => {
     fetch(PLATFORMS_URL)
