@@ -2,13 +2,38 @@ body {
   background-color: #cad2c5;
 }
 
+main {
+  margin: auto;
+}
+
 .nav-bar {
   vertical-align: top;
+}
+
+.heading {
+  font-family: 'Suranna', serif;
+  font-size: 150px;
+  color: #2f3e46;
 }
 
 #ad-size-logo {
   max-width: 200px;
   margin: 30px;
+}
+
+#container1 {
+  width: auto;
+  height: 50%;
+}
+
+#select-platform-prompt {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#container2 {
+  height: 50%;
 }
 
 .fade-in-image {
