@@ -6,11 +6,13 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  margin: 0;
 }
 
 main {
   margin-left: auto;
   margin-right: auto;
+  height: 70%;
 }
 
 button {
@@ -34,6 +36,13 @@ button {
 
 .nav-bar {
   vertical-align: top;
+  height: 30%;
+}
+
+.thin-nav-bar {
+  vertical-align: top;
+  background-color: #ffffff;
+  height: 3%;
 }
 
 .heading {
@@ -43,23 +52,41 @@ button {
   margin: 0;
 }
 
+.platform-list-item-div {
+  height: 20%;
+}
+
+.platform-list-item-p {
+  margin: 0;
+  color: #2f3e46;
+  font-family: 'Suranna', serif;
+  font-size: 0.7em;
+}
+
+.platform-list-item-p-alt {
+  margin: 0;
+  color: #52796f;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7em;
+}
+
 #ad-size-logo {
-  max-width: 200px;
+  width: 200px;
   margin: 30px;
 }
 
-#container1 {
+#select-your-platform-div-1 {
   width: auto;
   height: 50%;
 }
 
 #select-platform-prompt {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
+  margin-top: auto;
+  margin-bottom: auto;
+ }
 
-#container2 {
+#select-your-platform-div-2 {
   height: 50%;
 }
 
