@@ -73,6 +73,7 @@ function onPageLoad() {
     const thinNavBar = document.createElement('div')
     thinNavBar.setAttribute('class', 'thin-nav-bar')
     body.insertBefore(thinNavBar, main)
+    main.style.height = "90%"
 
     fetch(PLATFORMS_URL)
     .then(resp => resp.json())
@@ -87,7 +88,7 @@ function onPageLoad() {
 
     const platformP = document.createElement('p')
     platformP.setAttribute('id', `${platform.id}`)
-    console.log(isEven(2))
+
     if (isEven(platform.id)) {
       platformP.setAttribute('class', 'platform-list-item-p center')
     } else {
