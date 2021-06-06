@@ -9,10 +9,20 @@ document.addEventListener('DOMContentLoaded', () => onPageLoad())
 
 function onPageLoad() {
 
+  // takes a callback function and waits a specified amount of time to execute said function
+  const sleep = async (cbFunc, domElement, milliseconds) => {
+    await new Promise(r => setTimeout(r, milliseconds))
+    cbFunc(domElement, milliseconds)
+  }
+
   // allows elements to fade in after a specified period of time
   const fadeInXSec = async (parent, child, milliseconds) => {
     await new Promise(r => setTimeout(r, milliseconds));
     parent.appendChild(child)
+  }
+
+  const removeFromDom = (domElement, milliseconds) => {
+    domElement.remove()
   }
 
 
@@ -48,6 +58,25 @@ function onPageLoad() {
   selectButton.innerHTML = 'Select'
   fadeInXSec(container2, selectButton, 2000)
 
+
+  // loads the platform page
+
+  const loadPlatforms = () => {
+    fetch(PLATFORMS_URL)
+    .then(resp => resp.json())
+    .then(json => {
+      json.forEach(platform => renderPlatform(platform))
+    })
+  }
+
+  const renderPlatform = (platform) => {
+    console.log(platform)
+    const div = document.createElement('div')
+    div.setAttribute('class', 'platform-list-item')
+  }
+
+
+  // Event Listeners
   selectButton.addEventListener("mouseover", (event) => {
     event.target.style.backgroundColor = "#52796f"
     event.target.style.color = "#2f3e46"
@@ -60,20 +89,11 @@ function onPageLoad() {
 
   const buttonClick = (event) => {
     event.target.setAttribute('class', 'button fade-out')
+    selectPlatformPrompt.setAttribute('class', 'heading fade-out')
+    sleep(removeFromDom, container1, 1000)
+    sleep(removeFromDom, container2, 1000)
+    loadPlatforms()
   }
+
   selectButton.addEventListener("click", buttonClick)
-
-
-  const loadPlatforms = () => {
-    fetch(PLATFORMS_URL)
-    .then(resp => resp.json())
-    .then(json => {
-      json.forEach(platform => renderPlatform(platform))
-    })
-  }
-
-  const renderPlatform = (platform) => {
-    const div = document.createElement('div')
-
-  }
 }
