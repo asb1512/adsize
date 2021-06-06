@@ -32,6 +32,7 @@
 
 # Ignore internal notes
 notes.md
+
 backend/tmp/cache/bootsnap/load-path-cache
 backend/db/development.sqlite3
 backend/log/development.log
