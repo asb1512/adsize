@@ -15,12 +15,14 @@ function onPageLoad() {
     parent.appendChild(child)
   }
 
+
   // adds logo to page
   const adSizeLogo = document.createElement('img')
   adSizeLogo.setAttribute('id', 'ad-size-logo')
   adSizeLogo.setAttribute('class', 'fade-in')
   adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png')
   navBar.appendChild(adSizeLogo)
+
 
   // adds 2 containers within main tag
   const container1 = document.createElement('div')
@@ -31,12 +33,14 @@ function onPageLoad() {
   main.appendChild(container1)
   main.appendChild(container2)
 
+
   // adds 'Select your platform' prompt
   const selectPlatformPrompt = document.createElement('p')
   selectPlatformPrompt.setAttribute('id', 'select-platform-prompt')
   selectPlatformPrompt.setAttribute('class', 'heading fade-in')
   selectPlatformPrompt.innerHTML = 'Select your platform:'
   fadeInXSec(container1, selectPlatformPrompt, 1000)
+
 
   // adds 'Select' button
   const selectButton = document.createElement('button')
@@ -54,12 +58,11 @@ function onPageLoad() {
     event.target.style.color = "#52796f"
   }, false)
 
-  selectButton.addEventListener("click", buttonClick())
-
   const buttonClick = (event) => {
-    
-    event.preventDefault()
+    event.target.setAttribute('class', 'button fade-out')
   }
+  selectButton.addEventListener("click", buttonClick)
+
 
   const loadPlatforms = () => {
     fetch(PLATFORMS_URL)
