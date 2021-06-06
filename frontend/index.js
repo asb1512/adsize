@@ -18,7 +18,7 @@ function onPageLoad() {
   // adds logo to page
   const adSizeLogo = document.createElement('img')
   adSizeLogo.setAttribute('id', 'ad-size-logo')
-  adSizeLogo.setAttribute('class', 'fade-in-image')
+  adSizeLogo.setAttribute('class', 'fade-in')
   adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png')
   navBar.appendChild(adSizeLogo)
 
@@ -27,21 +27,39 @@ function onPageLoad() {
   container1.setAttribute('id', 'select-your-platform-div-1')
   const container2 = document.createElement('div')
   container2.setAttribute('id', 'select-your-platform-div-2')
+  container2.setAttribute('class', 'center')
   main.appendChild(container1)
   main.appendChild(container2)
 
   // adds 'Select your platform' prompt
   const selectPlatformPrompt = document.createElement('p')
   selectPlatformPrompt.setAttribute('id', 'select-platform-prompt')
-  selectPlatformPrompt.setAttribute('class', 'heading fade-in-image')
+  selectPlatformPrompt.setAttribute('class', 'heading fade-in')
   selectPlatformPrompt.innerHTML = 'Select your platform:'
   fadeInXSec(container1, selectPlatformPrompt, 1000)
 
   // adds 'Select' button
   const selectButton = document.createElement('button')
-  selectButton.setAttribute('class', 'button center')
+  selectButton.setAttribute('class', 'button fade-in')
   selectButton.innerHTML = 'Select'
   fadeInXSec(container2, selectButton, 2000)
+
+  selectButton.addEventListener("mouseover", (event) => {
+    event.target.style.backgroundColor = "#52796f"
+    event.target.style.color = "#2f3e46"
+  }, false)
+
+  selectButton.addEventListener("mouseout",(event) => {
+    event.target.style.backgroundColor = "#cad2c5"
+    event.target.style.color = "#52796f"
+  }, false)
+
+  selectButton.addEventListener("click", buttonClick())
+
+  const buttonClick = (event) => {
+    
+    event.preventDefault()
+  }
 
   const loadPlatforms = () => {
     fetch(PLATFORMS_URL)
