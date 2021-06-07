@@ -56,14 +56,14 @@ button {
   height: 20%;
 }
 
-.platform-list-item-p {
+.p-standard {
   margin: 0;
   color: #2f3e46;
   font-family: 'Suranna', serif;
   font-size: 1.1em;
 }
 
-.platform-list-item-p-alt {
+.p-alt {
   margin: 0;
   color: #52796f;
   font-family: 'Roboto Mono', monospace;
@@ -130,4 +130,8 @@ button {
   -ms-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3 ease-in-out;
+}
+
+.platform-item:hover {
+  -webkit-transform: scale(1.2);
 }
