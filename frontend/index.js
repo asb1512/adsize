@@ -90,16 +90,23 @@ function onPageLoad() {
     platformP.setAttribute('id', `${platform.id}`)
 
     if (isEven(platform.id)) {
-      platformP.setAttribute('class', 'platform-list-item-p center')
+      platformP.setAttribute('class', 'p-standard platform-item center')
     } else {
-      platformP.setAttribute('class', 'platform-list-item-p-alt center')
+      platformP.setAttribute('class', 'p-alt platform-item center')
     }
     platformP.innerHTML = `${platform.name}`
 
     main.appendChild(platformDiv)
     platformDiv.appendChild(platformP)
+    
+    platformP.addEventListener("click", (event) => {
+      loadAdDimensions(platformP)
+    })
   }
 
+  const loadAdDimensions = (platformP) => {
+    
+  }
 
   // Event Listeners
   selectButton.addEventListener("mouseover", (event) => {
