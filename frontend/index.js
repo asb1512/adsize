@@ -110,6 +110,12 @@ function onPageLoad() {
         if (platformId === e.id) {
           loadAdDimensions(e)
         }
+        const platforms = document.getElementsByClassName('platform-list-item-div center')
+        console.log(platforms)
+        for (const div of platforms) {
+          div.remove()
+        }
+        main.remove()
       })
     })
   }
@@ -120,8 +126,11 @@ function onPageLoad() {
     a.ad_dimensions.forEach(dimen => {
       const dimenDiv = document.createElement('div')
       dimenDiv.setAttribute('class', 'ad-dimension')
-      dimenDiv.setAttribute('width', `${dimen.width}`)
-      dimenDiv.setAttribute('height', `${dimen.height}`)
+      dimenDiv.setAttribute('style', `width: ${dimen.width}; height: ${dimen.height};`)
+      const dimenText = document.createElement('p')
+      dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
+      main.appendChild(dimenDiv)
+      dimenDiv.appendChild(dimenText)
     })
   }
 
