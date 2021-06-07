@@ -123,13 +123,17 @@ function onPageLoad() {
 
   // loads ad dimensions for the parent platform
   const loadAdDimensions = (a) => {
+    const dimenMainDiv = document.createElement('div')
+    dimenMainDiv.setAttribute('id', 'ad-dimensions-main-div')
     a.ad_dimensions.forEach(dimen => {
       const dimenDiv = document.createElement('div')
-      dimenDiv.setAttribute('class', 'ad-dimension')
+      dimenDiv.setAttribute('class', 'ad-dimension-div')
       dimenDiv.setAttribute('style', `width: ${dimen.width}; height: ${dimen.height};`)
       const dimenText = document.createElement('p')
       dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
-      main.appendChild(dimenDiv)
+      const script = document.getElementById('js-script')
+      body.insertBefore(dimenMainDiv, script)
+      dimenMainDiv.appendChild(dimenDiv)
       dimenDiv.appendChild(dimenText)
     })
   }
