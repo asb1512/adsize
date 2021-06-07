@@ -15,8 +15,6 @@ platform_names = [
   'Facebook',
   'Google',
   'Yahoo',
-  'Topple',
-  'Display'
 ]
 
 platform_names.each do |name|
@@ -31,9 +29,10 @@ fb_ad_dimensions = [
 ]
 
 fb_ad_dimensions.each do |ad|
-  e = AdDimension.create(name: ad[:name], width: ad[:width], height: ad[:height])
+  e = AdDimension.new(name: ad[:name], width: ad[:width], height: ad[:height])
   fb = Platform.find_by(name: 'Facebook')
   e.platform = fb
+  e.save
 end
 
 # Creation of Google ad dimensions
@@ -68,3 +67,16 @@ google_ad_dimensions.each do |ad|
 end
 
 # Creation of Yahoo ad dimensions
+yahoo_ad_dimensions = [
+  {name: 'Main Image', width: 1200, height: 627},
+  {name: 'Icon Image', width: 82, height: 82},
+  {name: 'Sponsor Marker - Small', width: 20, height: 20},
+  {name: 'Sponsor Marker – Large', width: 40, height: 40}
+]
+
+yahoo_ad_dimensions.each do |ad|
+  e = AdDimension.new(name: ad[:name], width: ad[:width], height: ad[:height])
+  yahoo = Platform.find_by(name: 'Yahoo')
+  e.platform = yahoo
+  e.save
+end
