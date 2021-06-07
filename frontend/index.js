@@ -1,9 +1,11 @@
 const BASE_URL = "http://localhost:3000"
 const PLATFORMS_URL = `${BASE_URL}/platforms`
-const AD_DIMENSIONS_URL = `${BASE_URL}/ad_dimensions`
+// const PLATFORM_URL = `${PLATFORMS_URL}/`
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
+
+const jsonResp = []
 
 const isEven = int => {
   return (int % 2 === 0)
@@ -78,7 +80,10 @@ function onPageLoad() {
     fetch(PLATFORMS_URL)
     .then(resp => resp.json())
     .then(json => {
-      json.forEach(platform => renderPlatform(platform))
+      json.forEach(platform => {
+        renderPlatform(platform)
+        jsonResp.push(platform)
+      })
     })
   }
 
@@ -86,26 +91,35 @@ function onPageLoad() {
     const platformDiv = document.createElement('div')
     platformDiv.setAttribute('class', 'platform-list-item-div center')
 
-    const platformP = document.createElement('p')
-    platformP.setAttribute('id', `${platform.id}`)
+    const platformA = document.createElement('a')
+    platformA.setAttribute('id', `${platform.id}`)
 
     if (isEven(platform.id)) {
-      platformP.setAttribute('class', 'p-standard platform-item center')
+      platformA.setAttribute('class', 'p-standard platform-item center')
     } else {
-      platformP.setAttribute('class', 'p-alt platform-item center')
+      platformA.setAttribute('class', 'p-alt platform-item center')
     }
-    platformP.innerHTML = `${platform.name}`
+    platformA.innerHTML = `${platform.name}`
 
     main.appendChild(platformDiv)
-    platformDiv.appendChild(platformP)
+    platformDiv.appendChild(platformA)
     
-    platformP.addEventListener("click", (event) => {
-      loadAdDimensions(platformP)
+    platformA.addEventListener("click", (event) => {
+      const platformId = parseInt(event.target.id, 10)
+      jsonResp.forEach(e => {
+        if (platformId === e.id) {
+          loadAdDimensions(e)
+        }
+      })
     })
   }
 
-  const loadAdDimensions = (platformP) => {
-    
+
+  // loads ad dimensions for the parent platform
+  const loadAdDimensions = (a) => {
+    debugger
+    console.log(a)
+    console.log(a.ad_dimensions[0].name)
   }
 
   // Event Listeners
