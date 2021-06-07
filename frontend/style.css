@@ -70,6 +70,14 @@ button {
   font-size: 1.1em;
 }
 
+.ad-dimension-main-div {
+  background-color: #ffffff;
+}
+
+/* .ad-dimension-div {
+  
+} */
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
