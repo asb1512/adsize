@@ -117,9 +117,9 @@ function onPageLoad() {
 
   // loads ad dimensions for the parent platform
   const loadAdDimensions = (a) => {
-    debugger
-    console.log(a)
-    console.log(a.ad_dimensions[0].name)
+    a.ad_dimensions.forEach(dim => {
+      const dimDiv
+    })
   }
 
   // Event Listeners
