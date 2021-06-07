@@ -117,8 +117,11 @@ function onPageLoad() {
 
   // loads ad dimensions for the parent platform
   const loadAdDimensions = (a) => {
-    a.ad_dimensions.forEach(dim => {
-      const dimDiv
+    a.ad_dimensions.forEach(dimen => {
+      const dimenDiv = document.createElement('div')
+      dimenDiv.setAttribute('class', 'ad-dimension')
+      dimenDiv.setAttribute('width', `${dimen.width}`)
+      dimenDiv.setAttribute('height', `${dimen.height}`)
     })
   }
 
