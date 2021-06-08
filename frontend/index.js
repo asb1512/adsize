@@ -126,16 +126,25 @@ function onPageLoad() {
     const dimenMainDiv = document.createElement('div')
     dimenMainDiv.setAttribute('id', 'ad-dimensions-main-div')
     a.ad_dimensions.forEach(dimen => {
+
       const dimenDiv = document.createElement('div')
       dimenDiv.setAttribute('class', 'ad-dimension-div')
       dimenDiv.setAttribute('style', `width: ${dimen.width}px; height: ${dimen.height}px; background-color: #ffffff;`)
+      
       const dimenText = document.createElement('p')
       dimenText.setAttribute('class', 'ad-dimension-p')
       dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
+
+      const dimenDescrip = document.createElement('p')
+      dimenDescrip.setAttribute('class', 'ad-dimension-description')
+      dimenDescrip.innerHTML = `${dimen.name}`
+
       const script = document.getElementById('js-script')
+
       body.insertBefore(dimenMainDiv, script)
       dimenMainDiv.appendChild(dimenDiv)
       dimenDiv.appendChild(dimenText)
+      dimenDiv.appendChild(dimenDescrip)
     })
   }
 
