@@ -76,7 +76,7 @@ button {
 }
 
 .ad-dimension-div {
-  margin: 1em;
+  margin: 0.8em;
   background-color: #ffffff;
   display: block;
   border: 1px solid #ffffff;
@@ -85,15 +85,19 @@ button {
 
 .ad-dimension-p {
   font-family: 'Roboto Mono', monospace;
-  margin: auto;
-  text-align: center;
-  display: block;
+  /* margin: auto;
+  text-align: center; */
+  /* display: block; */
   color: #52796f;
+  font-size: 0.1 em;
+  /* word-wrap: break-word; */
 }
 
 .ad-dimension-description {
   font-family: 'Suranna', serif;
+  font-size: 0.3em;
   color: #2f3e46;
+  margin-left: 1em;
 }
 
 .unselectable {
