@@ -128,8 +128,9 @@ function onPageLoad() {
     a.ad_dimensions.forEach(dimen => {
       const dimenDiv = document.createElement('div')
       dimenDiv.setAttribute('class', 'ad-dimension-div')
-      dimenDiv.setAttribute('style', `width: ${dimen.width}px; height: ${dimen.height}px;`)
+      dimenDiv.setAttribute('style', `width: ${dimen.width}px; height: ${dimen.height}px; background-color: #ffffff;`)
       const dimenText = document.createElement('p')
+      dimenText.setAttribute('class', 'ad-dimension-p')
       dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
       const script = document.getElementById('js-script')
       body.insertBefore(dimenMainDiv, script)
