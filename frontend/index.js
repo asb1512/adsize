@@ -47,7 +47,11 @@ function onPageLoad() {
   const emailInput = document.createElement('input')
   emailInput.setAttribute('id', 'email-input')
   emailInput.setAttribute('placeholder', 'Enter your email')
+  emailInput.setAttribute('style', 'margin: 1em;')
   const emailSubmitButton = document.createElement('button')
+  emailSubmitButton.setAttribute('id', 'email-form-button')
+  emailSubmitButton.setAttribute('class', 'platform-item')
+  emailSubmitButton.innerHTML = 'Submit'
 
   // appending email entry form
   navBar.appendChild(emailForm)
@@ -55,6 +59,8 @@ function onPageLoad() {
   emailForm.appendChild(emailInput)
   emailForm.appendChild(emailSubmitButton)
 
+  // adding event listener to prevent regular form submission
+  emailSubmitButton.addEventListener()
 
   // adds 2 containers within main tag
   const container1 = document.createElement('div')
