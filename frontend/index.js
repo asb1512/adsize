@@ -39,6 +39,11 @@ function onPageLoad() {
   adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png')
   navBar.appendChild(adSizeLogo)
 
+  // adds email label form and 'enter' button
+  const emailForm = document.createElement('form')
+  const emailLabel = document.createElement('label')
+  const emailInput = document.createElement('input')
+
 
   // adds 2 containers within main tag
   const container1 = document.createElement('div')
@@ -134,6 +139,7 @@ function onPageLoad() {
       const dimenText = document.createElement('p')
       dimenText.setAttribute('class', 'ad-dimension-p')
       dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
+      fitty(dimenText)
 
       const dimenDescrip = document.createElement('p')
       dimenDescrip.setAttribute('class', 'ad-dimension-description')
@@ -142,9 +148,9 @@ function onPageLoad() {
       const script = document.getElementById('js-script')
 
       body.insertBefore(dimenMainDiv, script)
+      dimenMainDiv.appendChild(dimenDescrip)
       dimenMainDiv.appendChild(dimenDiv)
       dimenDiv.appendChild(dimenText)
-      dimenDiv.appendChild(dimenDescrip)
     })
   }
 
