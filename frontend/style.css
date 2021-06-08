@@ -72,11 +72,16 @@ button {
 
 .ad-dimension-main-div {
   background-color: #ffffff;
+  display: block;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
 }
 
-/* .ad-dimension-div {
-  
-} */
+.ad-dimension-div {
+  font-size: 0.4em;
+  font-family: 'Roboto Mono', monospace;
+  margin: auto;
+}
 
 .unselectable {
   -webkit-touch-callout: none;
