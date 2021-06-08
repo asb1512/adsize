@@ -52,6 +52,11 @@ button {
   margin: 0;
 }
 
+.email-form {
+  margin: 0.3em;
+  float: right;
+}
+
 .platform-list-item-div {
   height: 20%;
 }
@@ -112,6 +117,7 @@ button {
 #ad-size-logo {
   width: 200px;
   margin: 30px;
+  float: left;
 }
 
 #select-your-platform-div-1 {
