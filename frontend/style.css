@@ -26,6 +26,8 @@ button {
   border: 20px solid #ffffff;
   font-family: 'Roboto Mono', monospace;
   font-size: 0.7em;
+  width: fit-content;
+  height: fit-content;
 }
 
 .center {
@@ -112,6 +114,13 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#email-form-button {
+  font-size: 0.2em;
+  width: fit-content;
+  height: fit-content;
+  border: 10px solid #ffffff;
 }
 
 #ad-size-logo {
