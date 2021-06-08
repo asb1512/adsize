@@ -71,16 +71,24 @@ button {
 }
 
 .ad-dimension-main-div {
+  display: block;
+  margin: auto;
+}
+
+.ad-dimension-div {
+  margin: 1em;
   background-color: #ffffff;
   display: block;
   border: 1px solid #ffffff;
   border-radius: 15px;
 }
 
-.ad-dimension-div {
-  font-size: 0.4em;
+.ad-dimension-p {
   font-family: 'Roboto Mono', monospace;
   margin: auto;
+  text-align: center;
+  display: block;
+  color: #52796f;
 }
 
 .unselectable {
