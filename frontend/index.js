@@ -41,8 +41,19 @@ function onPageLoad() {
 
   // adds email label form and 'enter' button
   const emailForm = document.createElement('form')
+  emailForm.setAttribute('class', 'email-form')
   const emailLabel = document.createElement('label')
+  emailLabel.setAttribute('for', 'email-input')
   const emailInput = document.createElement('input')
+  emailInput.setAttribute('id', 'email-input')
+  emailInput.setAttribute('placeholder', 'Enter your email')
+  const emailSubmitButton = document.createElement('button')
+
+  // appending email entry form
+  navBar.appendChild(emailForm)
+  emailForm.appendChild(emailLabel)
+  emailForm.appendChild(emailInput)
+  emailForm.appendChild(emailSubmitButton)
 
 
   // adds 2 containers within main tag
