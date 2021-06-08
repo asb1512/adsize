@@ -91,6 +91,11 @@ button {
   color: #52796f;
 }
 
+.ad-dimension-description {
+  font-family: 'Suranna', serif;
+  color: #2f3e46;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
