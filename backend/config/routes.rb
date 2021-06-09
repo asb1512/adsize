@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:create]
   resources :platforms, only: [:index, :show] do
     resources :ad_dimensions, only: [:index, :show]
   end
