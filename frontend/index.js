@@ -103,6 +103,8 @@ function onPageLoad() {
   }
 
   const displayUserList = () => {
+    const mainListDiv = document.createElement('div')
+    const listTitle = document.createElement('h3')
     
   }
 
