@@ -69,6 +69,16 @@ function onPageLoad() {
   // handles email verification
   const verifyEmail = (email) => {
     
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({email: email})
+    }
+
+    fetch(PLATFORMS_URL, configObj)
   }
 
   // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
