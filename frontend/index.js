@@ -1,5 +1,6 @@
 const BASE_URL = "http://localhost:3000"
 const PLATFORMS_URL = `${BASE_URL}/platforms`
+const USERS_URL = `${BASE_URL}/users`
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
@@ -78,9 +79,12 @@ function onPageLoad() {
       body: JSON.stringify({email: email})
     }
 
-    fetch(PLATFORMS_URL, configObj)
+    fetch(USERS_URL, configObj)
     .then(resp => resp.json())
     .then(json => console.log(json))
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
