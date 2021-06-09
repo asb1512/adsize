@@ -6,6 +6,7 @@ const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
 
 const jsonResp = []
+const currentUser = {id: 0, email: ""}
 
 const isEven = int => {
   return (int % 2 === 0)
