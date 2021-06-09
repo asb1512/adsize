@@ -1,6 +1,5 @@
 const BASE_URL = "http://localhost:3000"
 const PLATFORMS_URL = `${BASE_URL}/platforms`
-// const PLATFORM_URL = `${PLATFORMS_URL}/`
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
@@ -76,9 +75,9 @@ function onPageLoad() {
   const regexEmail = (email) => {
     const regex = new RegExp(/[@.]+/g)
     if (regex.test(email)) {
-      console.log('true')
+      verifyEmail(email)
     } else {
-      console.log('false')
+      alert('Please enter a valid email address.')
     }
   }
 
