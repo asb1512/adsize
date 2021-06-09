@@ -79,6 +79,8 @@ function onPageLoad() {
     }
 
     fetch(PLATFORMS_URL, configObj)
+    .then(resp => resp.json())
+    .then(json => console.log(json))
   }
 
   // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
