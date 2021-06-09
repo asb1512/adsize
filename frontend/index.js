@@ -85,7 +85,7 @@ function onPageLoad() {
     .then(json => {
       currentUser.id = json.user.id
       currentUser.email = json.user.email
-      console.log(currentUser)
+      displayUserList()
     })
     .catch(error => {
       console.log(error)
@@ -100,6 +100,10 @@ function onPageLoad() {
     } else {
       alert('Please enter a valid email address.')
     }
+  }
+
+  const displayUserList = () => {
+    
   }
 
 
