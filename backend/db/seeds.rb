@@ -9,6 +9,7 @@
 # Clear DB each time seed file is run.
 Platform.delete_all
 AdDimension.delete_all
+User.delete_all
 
 # Creation of ad platforms
 platform_names = [
@@ -79,4 +80,16 @@ yahoo_ad_dimensions.each do |ad|
   yahoo = Platform.find_by(name: 'Yahoo')
   e.platform = yahoo
   e.save
+end
+
+# Creation of several users
+user_info = [
+  {email: 'test@gmail.com'},
+  {email: 'test@aol.com'},
+  {email: 'test@yahoo.com'}
+]
+
+user_info.each do |user|
+  new_user = User.new(email: user[:email])
+  new_user.save
 end
