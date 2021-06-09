@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :list_items
-  resources :lists
-  resources :users, only: [:create]
+  resources :users, only: [:create] do
+    resources :lists, only: [:show] do
+      resources :list_items
+    end
+  end
+
   resources :platforms, only: [:index, :show] do
     resources :ad_dimensions, only: [:index, :show]
   end
