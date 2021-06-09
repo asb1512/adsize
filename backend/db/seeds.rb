@@ -10,6 +10,8 @@
 Platform.delete_all
 AdDimension.delete_all
 User.delete_all
+List.delete_all
+ListItem.delete_all
 
 # Creation of ad platforms
 platform_names = [
@@ -92,4 +94,45 @@ user_info = [
 user_info.each do |user|
   new_user = User.new(email: user[:email])
   new_user.save
+end
+
+# Create a list for each user
+list_info = [
+  {title: 'My ToDo List'},
+  {title: 'Things to Complete'},
+  {title: 'Ads to Make'}
+]
+
+list_info.each do |list|
+  new_list = List.new(title: list[:title])
+  list_index = list_info.index(list)
+  new_list.user = User.all[list_index]
+  new_list.save
+end
+
+# Create list items for each list
+list_item_info = [
+  [
+    {message: 'start ad performance presentation'},
+    {message: 'export GA data for coporate account'},
+    {message: 'adjust bid for Smith account on FB'}
+  ],
+  [
+    {message: 'finish account set up for Embers Media'},
+    {message: 'schedule meeting for ad package'}
+  ],
+  [
+    {message: 'create Google ad set for Flaura Co.'},
+    {message: 'submit insurance enrollment by COB today'},
+    {message: 'remember to take a deep breath'}
+  ]
+]
+
+list_item_info.each do |item_group|
+  item_group_index = list_item_info.index(item_group)
+  item_group.each do |item|
+    new_list_item = ListItem.new(message: item[:message])
+    new_list_item.list = List.all[item_group_index]
+    new_list_item.save
+  end
 end
