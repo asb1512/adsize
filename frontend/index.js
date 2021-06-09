@@ -39,6 +39,7 @@ function onPageLoad() {
   adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png')
   navBar.appendChild(adSizeLogo)
 
+
   // adds email label form and 'enter' button
   const emailForm = document.createElement('form')
   emailForm.setAttribute('class', 'email-form')
@@ -53,14 +54,35 @@ function onPageLoad() {
   emailSubmitButton.setAttribute('class', 'platform-item')
   emailSubmitButton.innerHTML = 'Submit'
 
+  // adds event listener and prevents default form submission
+  emailForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const inputText = document.getElementById('email-input')
+    regexEmail(inputText.value)
+  })
+
   // appending email entry form
   navBar.appendChild(emailForm)
   emailForm.appendChild(emailLabel)
   emailForm.appendChild(emailInput)
   emailForm.appendChild(emailSubmitButton)
 
-  // adding event listener to prevent regular form submission
-  emailSubmitButton.addEventListener()
+  // handles email verification
+  const verifyEmail = (email) => {
+    
+  }
+
+  // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
+  const regexEmail = (email) => {
+    const regex = new RegExp(/[@.]+/g)
+    if (regex.test(email)) {
+      console.log('true')
+    } else {
+      console.log('false')
+    }
+  }
+
+
 
   // adds 2 containers within main tag
   const container1 = document.createElement('div')
