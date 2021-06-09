@@ -82,7 +82,11 @@ function onPageLoad() {
 
     fetch(USERS_URL, configObj)
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => {
+      currentUser.id = json.user.id
+      currentUser.email = json.user.email
+      console.log(currentUser)
+    })
     .catch(error => {
       console.log(error)
     })
