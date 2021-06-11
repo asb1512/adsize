@@ -86,7 +86,7 @@ function onPageLoad() {
       currentUser["id"] = json.id
       currentUser["email"] = json.email
       currentUser["list"] = json.list
-      debugger
+      currentUser["list"]["list_items"] = json.list.list_items
       displayUserList()
     })
     .catch(error => {
