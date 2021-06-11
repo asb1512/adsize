@@ -6,7 +6,7 @@ const navBar = document.getElementsByClassName('nav-bar')[0]
 const main = document.querySelector('main')
 
 const jsonResp = []
-const currentUser = {id: 0, email: "", list_id: 0}
+const currentUser = {}
 
 const isEven = int => {
   return (int % 2 === 0)
@@ -83,11 +83,10 @@ function onPageLoad() {
     fetch(USERS_URL, configObj)
     .then(resp => resp.json())
     .then(json => {
+      currentUser["id"] = json.id
+      currentUser["email"] = json.email
+      currentUser["list"] = json.list
       debugger
-      currentUser.id = json.id
-      currentUser.email = json.email
-      currentUser.list_id = 
-      
       displayUserList()
     })
     .catch(error => {
