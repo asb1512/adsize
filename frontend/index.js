@@ -105,8 +105,9 @@ function onPageLoad() {
   }
 
   const displayUserList = () => {
-    const mainListDiv = document.createElement('div')
-    const listTitle = document.createElement('h3')
+    const sideBarDiv = document.createElement('div')
+    const listTitleDiv = document.createElement('div')
+    const listContentDiv = document.createElement('div')
 
   }
 
