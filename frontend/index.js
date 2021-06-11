@@ -105,10 +105,18 @@ function onPageLoad() {
   }
 
   const displayUserList = () => {
-    const sideBarDiv = document.createElement('div')
-    const listTitleDiv = document.createElement('div')
-    const listContentDiv = document.createElement('div')
+    emailForm.remove();
 
+    const sideBarDiv = document.createElement('div')
+    sideBarDiv.setAttribute('class', 'sidebar')
+    const listTitleDiv = document.createElement('div')
+    listTitleDiv.setAttribute('class', 'list-title')
+    const listContentDiv = document.createElement('div')
+    listContentDiv.setAttribute('class', 'list-content')
+
+    body.insertBefore(sideBarDiv, main)
+    sideBarDiv.appendChild(listTitleDiv)
+    sideBarDiv.appendChild(listContentDiv)
   }
 
 
