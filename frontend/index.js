@@ -64,7 +64,7 @@ function onPageLoad() {
   emailSubmitButton.setAttribute('id', 'email-form-button')
   emailSubmitButton.setAttribute('class', 'platform-item')
   emailSubmitButton.innerHTML = 'Submit'
-  
+
 
   // adds event listener and prevents default form submission
   emailForm.addEventListener("submit", (event) => {
@@ -127,7 +127,7 @@ function onPageLoad() {
       const notesAn = document.createElement('a')
       notesAn.setAttribute('id', `${item.id}`)
       notesAn.setAttribute('href', '#')
-      notesAn.setAttribute('onclick', 'deleteListItem()')
+      notesAn.setAttribute('onclick', 'deleteListItem();')
       notesAn.innerHTML = item.message
       notesSideBar.appendChild(notesAn)
     })
@@ -173,7 +173,7 @@ function onPageLoad() {
     const notesAn = document.createElement('a')
     // notesAn.setAttribute('id', `${item.id}`)
     notesAn.setAttribute('href', '#')
-    notesAn.setAttribute('onclick', 'deleteListItem()')
+    notesAn.setAttribute('onclick', 'deleteListItem();')
     notesAn.innerHTML = message
     notesSideBar.insertBefore(notesAn, newNoteAn)
 
@@ -189,10 +189,13 @@ function onPageLoad() {
     }
 
     fetch(listItemsUrl, configObj)
+    .then(resp => resp.json())
+    .then(json => {
+      notesAn.setAttribute('id', `${json.id}`)
+    })
     .catch(error => {
       console.log(error)
     })
-    // come back and set the id on notesAn anchor element after successful API call
   }
 
 
