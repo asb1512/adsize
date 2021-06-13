@@ -12,6 +12,14 @@ const isEven = int => {
   return (int % 2 === 0)
 }
 
+function openNav() {
+  document.getElementById("mySidenav").style.width = "400px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 document.addEventListener('DOMContentLoaded', () => onPageLoad())
 
 function onPageLoad() {
@@ -142,7 +150,7 @@ function onPageLoad() {
   // adds 'Select' button
   const selectButton = document.createElement('button')
   selectButton.setAttribute('class', 'button fade-in')
-  selectButton.innerHTML = 'Select'
+  selectButton.innerHTML = 'Show'
   fadeInXSec(container2, selectButton, 2000)
 
 
