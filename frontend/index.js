@@ -128,12 +128,16 @@ function onPageLoad() {
       notesSideBar.appendChild(notesAn)
     })
 
+    // creates 'Add new note' button
     const newNoteAn = document.createElement('a')
     newNoteAn.setAttribute('href', '#')
     newNoteAn.setAttribute('id', 'create-new-note')
     newNoteAn.innerHTML = '&#43; Add new note'
     notesSideBar.appendChild(newNoteAn)
   }
+
+  // listens for click on 'Add new note' anchor
+  newNoteAn.addEventListener("click", (event))
 
 
   // adds 2 containers within main tag
@@ -162,7 +166,6 @@ function onPageLoad() {
 
 
   // loads the platform page
-
   const loadPlatforms = () => {
     adSizeLogo.setAttribute('class', 'fade-out')
     sleep(removeFromDom, adSizeLogo, 1000)
