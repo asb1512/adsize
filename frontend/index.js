@@ -147,6 +147,10 @@ function onPageLoad() {
 
       newNoteDiv.appendChild(newNoteInput)
       notesSideBar.insertBefore(newNoteDiv, newNoteAn)
+
+      newNoteInput.addEventListener("keyup", event => {
+        
+      })
     })
   }
 
