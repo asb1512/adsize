@@ -69,16 +69,17 @@ button {
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 38px;
   text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
   font-size: 25px;
-  color: #818181;
+  color: #52796f;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #cad2c5;
 }
 
 .sidenav .closebtn {
