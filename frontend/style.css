@@ -97,8 +97,11 @@ button {
 }
 
 .notes-header {
-  font-size: 80%;
+  font-size: 95%;
   text-align: center;
+  font-family: 'Suranna', serif;
+  color: #2f3e46;
+  padding: 0;
 }
 
 .email-form {
