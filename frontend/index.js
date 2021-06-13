@@ -138,7 +138,10 @@ function onPageLoad() {
     // listens for click on 'Add new note' anchor
     newNoteAn.addEventListener("click", event => {
       const newNoteInput = document.createElement('input')
+      newNoteInput.setAttribute('id', 'new-note-input')
       newNoteInput.setAttribute('type', 'text')
+      newNoteInput.setAttribute('placeholder', 'Enter your note')
+      notesSideBar.insertBefore(newNoteInput, newNoteAn)
     })
   }
 
