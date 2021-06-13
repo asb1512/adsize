@@ -158,13 +158,17 @@ function onPageLoad() {
   }
 
   const addNewUserNote = message => {
-    
+    const newNoteAn = document.getElementById('create-new-note')
+    const newNoteDiv = document.getElementById('new-note-div')
+    newNoteDiv.remove()
 
     const notesAn = document.createElement('a')
-      // notesAn.setAttribute('id', `${item.id}`)
-      notesAn.setAttribute('href', '#')
-      notesAn.innerHTML = message
-      notesSideBar.appendChild(notesAn)
+    // notesAn.setAttribute('id', `${item.id}`)
+    notesAn.setAttribute('href', '#')
+    notesAn.innerHTML = message
+    notesSideBar.insertBefore(notesAn, newNoteAn)
+
+    
   }
 
 
