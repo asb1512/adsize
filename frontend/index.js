@@ -114,6 +114,7 @@ function onPageLoad() {
     }
   }
 
+  // displays all user's list items
   const displayUserList = () => {
     emailForm.remove()
     notesSignInMessage.remove()
@@ -127,13 +128,12 @@ function onPageLoad() {
       notesSideBar.appendChild(notesAn)
     })
 
-    const createNewNote = document.createElement('a')
-    createNewNote.setAttribute('href', '#')
-    createNewNote.setAttribute('id', 'create-new-note')
-    createNewNote.innerHTML = '&#43; Add new note'
-    notesSideBar.appendChild(createNewNote)
+    const newNoteAn = document.createElement('a')
+    newNoteAn.setAttribute('href', '#')
+    newNoteAn.setAttribute('id', 'create-new-note')
+    newNoteAn.innerHTML = '&#43; Add new note'
+    notesSideBar.appendChild(newNoteAn)
   }
-
 
 
   // adds 2 containers within main tag
