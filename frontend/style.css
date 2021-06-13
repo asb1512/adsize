@@ -101,12 +101,21 @@ button {
   font-size: 95%;
   text-align: center;
   font-family: 'Suranna', serif;
+  font-weight: normal;
   color: #2f3e46;
   padding: 0;
 }
 
 #create-new-note {
-  
+  font-family: 'Suranna', serif;
+  font-size: 0.5em;
+  font-weight: normal;
+  text-align: center;
+  color: #2f3e46;
+}
+
+#create-new-note:hover {
+  color: #52796f;
 }
 
 .email-form {
