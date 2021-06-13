@@ -64,6 +64,7 @@ function onPageLoad() {
   emailSubmitButton.setAttribute('id', 'email-form-button')
   emailSubmitButton.setAttribute('class', 'platform-item')
   emailSubmitButton.innerHTML = 'Submit'
+  
 
   // adds event listener and prevents default form submission
   emailForm.addEventListener("submit", (event) => {
@@ -71,6 +72,7 @@ function onPageLoad() {
     const inputText = document.getElementById('email-input')
     regexEmail(inputText.value)
   })
+
 
   // appending email entry form
   navBar.appendChild(emailForm)
@@ -171,6 +173,7 @@ function onPageLoad() {
     const notesAn = document.createElement('a')
     // notesAn.setAttribute('id', `${item.id}`)
     notesAn.setAttribute('href', '#')
+    notesAn.setAttribute('onclick', 'deleteListItem()')
     notesAn.innerHTML = message
     notesSideBar.insertBefore(notesAn, newNoteAn)
 
@@ -189,6 +192,7 @@ function onPageLoad() {
     .catch(error => {
       console.log(error)
     })
+    // come back and set the id on notesAn anchor element after successful API call
   }
 
 
