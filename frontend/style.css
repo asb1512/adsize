@@ -39,6 +39,7 @@ button {
 .nav-bar {
   vertical-align: top;
   height: 30%;
+  width: 100%;
 }
 
 .thin-nav-bar {
@@ -60,25 +61,44 @@ button {
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
-  background-color: #111;
+  right: 0;
+  background-color: #ffffff;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
 }
 
-.hamburger .bar, .hamburger:after, .hamburger:before {
-  content: '';
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
   display: block;
-  width: 100%;
-  height: 5px;
-  background-color: #ffffff;
-  margin: 6px 0px;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
-.hamburger.is-active:after {
-  transform: rotate(-45deg) translate(-9px, 6px);
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.hamburger {
+  right: 0;
+  position: absolute;
+  margin: 30px;
+  color: #52796f;
+}
+
+.notes-header {
+  font-size: 80%;
+  text-align: center;
 }
 
 .email-form {
