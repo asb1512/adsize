@@ -118,6 +118,11 @@ button {
   color: #52796f;
 }
 
+#new-note-input {
+  margin: auto;
+  width: 90%;
+}
+
 .email-form {
   margin: 0.3em;
   float: right;
