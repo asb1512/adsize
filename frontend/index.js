@@ -132,8 +132,14 @@ function onPageLoad() {
       // adds event listener to each list item anchor that is appended
       notesAn.addEventListener("click", event => {
         event.target.setAttribute('style', 'text-decoration: line-through;')
+        deleteListItem(event.target.id)
       })
     })
+
+    // sends DELETE request to delete user's selected list item
+    const deleteListItem = id => {
+      
+    }
 
     // creates 'Add new note' button
     const newNoteAn = document.createElement('a')
