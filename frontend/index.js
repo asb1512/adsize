@@ -5,6 +5,7 @@ const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const notesSideBar = document.getElementsByClassName('sidenav')[0]
 const main = document.querySelector('main')
+const notesSignInMessage = document.getElementById('notes-signin-message')
 
 const jsonResp = []
 const currentUser = {}
@@ -115,16 +116,18 @@ function onPageLoad() {
 
   const displayUserList = () => {
     emailForm.remove()
+    notesSignInMessage.remove()
     openNav()
-    debugger
-    const notesUl = document.createElement('ul')
+    
     currentUser.list.list_items.forEach(item => {
-      const notesLi = document.createElement('li')
-      notesLi.setAttribute('id', `${item.id}`)
-      notesLi.innerHTML = item.message
-      notesUl.appendChild(item)
+      const notesAn = document.createElement('a')
+      notesAn.setAttribute('id', `${item.id}`)
+      notesAn.setAttribute('href', '#')
+      notesAn.innerHTML = item.message
+      notesSideBar.appendChild(notesAn)
     })
-    notesSideBar.appendChild(notesUl)
+
+    const addNewNote;
   }
 
 
