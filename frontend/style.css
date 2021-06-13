@@ -120,7 +120,11 @@ button {
 
 #new-note-input {
   margin: auto;
-  width: 90%;
+  width: 85%;
+}
+
+#new-note-div {
+  padding: 8px 8px 8px 38px;
 }
 
 .email-form {
