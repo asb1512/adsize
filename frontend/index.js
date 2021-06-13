@@ -134,10 +134,13 @@ function onPageLoad() {
     newNoteAn.setAttribute('id', 'create-new-note')
     newNoteAn.innerHTML = '&#43; Add new note'
     notesSideBar.appendChild(newNoteAn)
-  }
 
-  // listens for click on 'Add new note' anchor
-  newNoteAn.addEventListener("click", (event))
+    // listens for click on 'Add new note' anchor
+    newNoteAn.addEventListener("click", event => {
+      const newNoteInput = document.createElement('input')
+      newNoteInput.setAttribute('type', 'text')
+    })
+  }
 
 
   // adds 2 containers within main tag
