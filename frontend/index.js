@@ -98,6 +98,7 @@ function onPageLoad() {
       currentUser["list"] = json.list
       currentUser["list"]["list_items"] = json.list.list_items
       displayUserList()
+      console.log(json)
     })
     .catch(error => {
       console.log(error)
@@ -140,14 +141,17 @@ function onPageLoad() {
       const newNoteDiv = document.createElement('div')
       newNoteDiv.setAttribute('id', 'new-note-div')
 
+      // creates a text input for new list item
       const newNoteInput = document.createElement('input')
       newNoteInput.setAttribute('id', 'new-note-input')
       newNoteInput.setAttribute('type', 'text')
       newNoteInput.setAttribute('placeholder', 'Enter your note')
 
+      // adds text input and parent div to DOM
       newNoteDiv.appendChild(newNoteInput)
       notesSideBar.insertBefore(newNoteDiv, newNoteAn)
 
+      // if user presses enter key, calls addNewUserNote()
       newNoteInput.addEventListener("keyup", event => {
         if (event.keyCode === 13) {
           event.preventDefault()
@@ -157,6 +161,7 @@ function onPageLoad() {
     })
   }
 
+  // adds new user list item to user's list and POSTs to API
   const addNewUserNote = message => {
     const newNoteAn = document.getElementById('create-new-note')
     const newNoteDiv = document.getElementById('new-note-div')
@@ -168,7 +173,18 @@ function onPageLoad() {
     notesAn.innerHTML = message
     notesSideBar.insertBefore(notesAn, newNoteAn)
 
-    
+    const listItemsUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items`
+
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({message: message})
+    }
+
+    fetch(listItemsUrl, configObj)
   }
 
 
