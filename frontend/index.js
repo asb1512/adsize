@@ -149,9 +149,22 @@ function onPageLoad() {
       notesSideBar.insertBefore(newNoteDiv, newNoteAn)
 
       newNoteInput.addEventListener("keyup", event => {
-        
+        if (event.keyCode === 13) {
+          event.preventDefault()
+          addNewUserNote(event.target.value)
+        }
       })
     })
+  }
+
+  const addNewUserNote = message => {
+    
+
+    const notesAn = document.createElement('a')
+      // notesAn.setAttribute('id', `${item.id}`)
+      notesAn.setAttribute('href', '#')
+      notesAn.innerHTML = message
+      notesSideBar.appendChild(notesAn)
   }
 
 
