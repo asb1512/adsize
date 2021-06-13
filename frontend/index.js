@@ -125,6 +125,7 @@ function onPageLoad() {
       const notesAn = document.createElement('a')
       notesAn.setAttribute('id', `${item.id}`)
       notesAn.setAttribute('href', '#')
+      notesAn.setAttribute('onclick', 'deleteListItem()')
       notesAn.innerHTML = item.message
       notesSideBar.appendChild(notesAn)
     })
@@ -185,6 +186,9 @@ function onPageLoad() {
     }
 
     fetch(listItemsUrl, configObj)
+    .catch(error => {
+      console.log(error)
+    })
   }
 
 
