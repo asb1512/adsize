@@ -127,9 +127,13 @@ function onPageLoad() {
       const notesAn = document.createElement('a')
       notesAn.setAttribute('id', `${item.id}`)
       notesAn.setAttribute('href', '#')
-      notesAn.setAttribute('onclick', 'deleteListItem();')
       notesAn.innerHTML = item.message
       notesSideBar.appendChild(notesAn)
+      // adds event listener to each list item anchor that is appended
+      notesAn.addEventListener("click", event => {
+        console.log(event.target)
+        debugger
+      })
     })
 
     // creates 'Add new note' button
@@ -173,7 +177,6 @@ function onPageLoad() {
     const notesAn = document.createElement('a')
     // notesAn.setAttribute('id', `${item.id}`)
     notesAn.setAttribute('href', '#')
-    notesAn.setAttribute('onclick', 'deleteListItem();')
     notesAn.innerHTML = message
     notesSideBar.insertBefore(notesAn, newNoteAn)
 
