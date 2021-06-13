@@ -3,6 +3,7 @@ const PLATFORMS_URL = `${BASE_URL}/platforms`
 const USERS_URL = `${BASE_URL}/users`
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
+const notesSideBar = document.getElementsByClassName('sidenav')[0]
 const main = document.querySelector('main')
 
 const jsonResp = []
@@ -113,18 +114,17 @@ function onPageLoad() {
   }
 
   const displayUserList = () => {
-    emailForm.remove();
-
-    const sideBarDiv = document.createElement('div')
-    sideBarDiv.setAttribute('class', 'sidebar')
-    const listTitleDiv = document.createElement('div')
-    listTitleDiv.setAttribute('class', 'list-title')
-    const listContentDiv = document.createElement('div')
-    listContentDiv.setAttribute('class', 'list-content')
-
-    body.insertBefore(sideBarDiv, main)
-    sideBarDiv.appendChild(listTitleDiv)
-    sideBarDiv.appendChild(listContentDiv)
+    emailForm.remove()
+    openNav()
+    debugger
+    const notesUl = document.createElement('ul')
+    currentUser.list.list_items.forEach(item => {
+      const notesLi = document.createElement('li')
+      notesLi.setAttribute('id', `${item.id}`)
+      notesLi.innerHTML = item.message
+      notesUl.appendChild(item)
+    })
+    notesSideBar.appendChild(notesUl)
   }
 
 
