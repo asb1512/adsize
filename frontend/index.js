@@ -131,8 +131,7 @@ function onPageLoad() {
       notesSideBar.appendChild(notesAn)
       // adds event listener to each list item anchor that is appended
       notesAn.addEventListener("click", event => {
-        console.log(event.target)
-        debugger
+        event.target.setAttribute('style', 'text-decoration: line-through;')
       })
     })
 
