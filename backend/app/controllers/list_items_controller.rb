@@ -5,6 +5,6 @@ class ListItemsController < ApplicationController
     user.list.list_items << list_item
     list_item.save
     user.save
-    render status: 200, message: "Successfully created user list item."
+    render json: list_item, status: 200, message: "Successfully created user list item."
   end
 end
