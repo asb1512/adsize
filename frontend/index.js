@@ -138,7 +138,18 @@ function onPageLoad() {
 
     // sends DELETE request to delete user's selected list item
     const deleteListItem = id => {
+      const deleteListItemUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items/${id}`
+
+      const configObj = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: ""
+      }
       
+      fetch(deleteListItemUrl, configObj)
     }
 
     // creates 'Add new note' button
