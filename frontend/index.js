@@ -127,7 +127,11 @@ function onPageLoad() {
       notesSideBar.appendChild(notesAn)
     })
 
-    const addNewNote;
+    const createNewNote = document.createElement('a')
+    createNewNote.setAttribute('href', '#')
+    createNewNote.setAttribute('id', 'create-new-note')
+    createNewNote.innerHTML = '&#43; Add new note'
+    notesSideBar.appendChild(createNewNote)
   }
 
 
