@@ -98,6 +98,7 @@ button {
 }
 
 .notes-header {
+  margin: 0px;
   font-size: 95%;
   text-align: center;
   font-family: 'Suranna', serif;
