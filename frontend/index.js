@@ -12,9 +12,10 @@ class Platform {
 }
 
 class User {
-  constructor(id, email) {
+  constructor(id, email, list) {
     this.id = id
     this.email = email
+    this.list = list
   }
 }
 
@@ -25,7 +26,7 @@ const main = document.querySelector('main')
 const notesSignInMessage = document.getElementById('notes-signin-message')
 
 const jsonResp = []
-const currentUser = {}
+let currentUser;
 
 const isEven = int => {
   return (int % 2 === 0)
@@ -112,12 +113,8 @@ function onPageLoad() {
     fetch(USERS_URL, configObj)
     .then(resp => resp.json())
     .then(json => {
-      currentUser["id"] = json.id
-      currentUser["email"] = json.email
-      currentUser["list"] = json.list
-      currentUser["list"]["list_items"] = json.list.list_items
+      currentUser = new User(json.id, json.email, json.list)
       displayUserList()
-      console.log(json)
     })
     .catch(error => {
       console.log(error)
