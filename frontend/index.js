@@ -4,11 +4,15 @@ const USERS_URL = `${BASE_URL}/users`
 
 // classes
 class Platform {
-
+  constructor(id, name, adDimensions) {
+    this.id = id
+    this.name = name
+    this.adDimensions
+  }
 }
 
 class User {
-  
+
 }
 
 const body = document.querySelector('body')
