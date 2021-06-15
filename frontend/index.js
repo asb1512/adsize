@@ -7,7 +7,7 @@ class Platform {
   constructor(id, name, adDimensions) {
     this.id = id
     this.name = name
-    this.adDimensions
+    this.adDimensions = adDimensions
   }
 }
 
@@ -284,6 +284,8 @@ function onPageLoad() {
     .then(resp => resp.json())
     .then(json => {
       json.forEach(platform => {
+        const currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions)
+        debugger
         renderPlatform(platform)
         jsonResp.push(platform)
       })
