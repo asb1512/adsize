@@ -306,7 +306,6 @@ function onPageLoad() {
           loadAdDimensions(e)
         }
         const platforms = document.getElementsByClassName('platform-list-item-div center')
-        console.log(platforms)
         for (const div of platforms) {
           div.remove()
         }
