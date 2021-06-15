@@ -1,6 +1,16 @@
 const BASE_URL = "http://localhost:3000"
 const PLATFORMS_URL = `${BASE_URL}/platforms`
 const USERS_URL = `${BASE_URL}/users`
+
+// classes
+class Platform {
+
+}
+
+class User {
+  
+}
+
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const notesSideBar = document.getElementsByClassName('sidenav')[0]
