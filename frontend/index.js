@@ -11,15 +11,6 @@ class Platform {
   }
 }
 
-class AdDimension {
-  constructor(id, name, width, height) {
-    this.id = id
-    this.name = name
-    this.width = width
-    this.height = height
-  }
-}
-
 class User {
   constructor(id, email) {
     this.id = id
