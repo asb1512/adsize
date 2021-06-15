@@ -25,7 +25,7 @@ const notesSideBar = document.getElementsByClassName('sidenav')[0]
 const main = document.querySelector('main')
 const notesSignInMessage = document.getElementById('notes-signin-message')
 
-const jsonResp = []
+let currentPlatform;
 let currentUser;
 
 const isEven = int => {
@@ -272,9 +272,8 @@ function onPageLoad() {
     .then(resp => resp.json())
     .then(json => {
       json.forEach(platform => {
-        const currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions)
+        currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions)
         renderPlatform(currentPlatform)
-        jsonResp.push(platform)
       })
     })
   }
@@ -299,6 +298,7 @@ function onPageLoad() {
     platformA.addEventListener("click", (event) => {
       const platformId = parseInt(event.target.id, 10)
       jsonResp.forEach(e => {
+        debugger
         if (platformId === e.id) {
           loadAdDimensions(e)
         }
