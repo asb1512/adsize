@@ -276,8 +276,7 @@ function onPageLoad() {
     .then(json => {
       json.forEach(platform => {
         const currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions)
-        debugger
-        renderPlatform(platform)
+        renderPlatform(currentPlatform)
         jsonResp.push(platform)
       })
     })
