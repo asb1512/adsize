@@ -9,10 +9,10 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     list_item = ListItem.find_by(id: params[:id])
     if list_item
       list_item.destroy
+      render status: 200
     else
       render status: 400, message: "Request note doesn not exist."
     end
