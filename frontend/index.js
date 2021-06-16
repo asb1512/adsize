@@ -2,6 +2,7 @@ const BASE_URL = "http://localhost:3000"
 const PLATFORMS_URL = `${BASE_URL}/platforms`
 const USERS_URL = `${BASE_URL}/users`
 
+const allPlatforms = []
 // classes
 class Platform {
   constructor(id, name, adDimensions) {
@@ -19,14 +20,15 @@ class User {
   }
 }
 
+// allows an instance of a User or Platform to be assigned and accessed globally
+let currentPlatform;
+let currentUser;
+
 const body = document.querySelector('body')
 const navBar = document.getElementsByClassName('nav-bar')[0]
 const notesSideBar = document.getElementsByClassName('sidenav')[0]
 const main = document.querySelector('main')
 const notesSignInMessage = document.getElementById('notes-signin-message')
-
-let currentPlatform;
-let currentUser;
 
 const isEven = int => {
   return (int % 2 === 0)
@@ -273,6 +275,7 @@ function onPageLoad() {
     .then(json => {
       json.forEach(platform => {
         currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions)
+        allPlatforms.push(currentPlatform)
         renderPlatform(currentPlatform)
       })
     })
@@ -297,8 +300,7 @@ function onPageLoad() {
     
     platformA.addEventListener("click", (event) => {
       const platformId = parseInt(event.target.id, 10)
-      jsonResp.forEach(e => {
-        debugger
+      allPlatforms.forEach(e => {
         if (platformId === e.id) {
           loadAdDimensions(e)
         }
