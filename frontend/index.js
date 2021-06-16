@@ -318,7 +318,7 @@ function onPageLoad() {
   const loadAdDimensions = (a) => {
     const dimenMainDiv = document.createElement('div')
     dimenMainDiv.setAttribute('id', 'ad-dimensions-main-div')
-    a.ad_dimensions.forEach(dimen => {
+    a.adDimensions.forEach(dimen => {
 
       const dimenDiv = document.createElement('div')
       dimenDiv.setAttribute('class', 'ad-dimension-div')
