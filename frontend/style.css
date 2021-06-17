@@ -151,27 +151,28 @@ button {
   font-size: 1.1em;
 }
 
-.ad-dimension-main-div {
+#ad-dimensions-main-div {
   display: block;
-  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 0px;
+  padding-bottom: 50px;
 }
 
 .ad-dimension-div {
-  margin: 0.8em;
   background-color: #ffffff;
-  display: block;
+  display: table-cell;
+  vertical-align: middle;
   border: 1px solid #ffffff;
   border-radius: 15px;
 }
 
 .ad-dimension-p {
   font-family: 'Roboto Mono', monospace;
-  /* margin: auto;
-  text-align: center; */
-  /* display: block; */
+  margin: auto;
+  text-align: center;
   color: #52796f;
-  font-size: 0.1 em;
-  /* word-wrap: break-word; */
+  font-size: 0.3em;
 }
 
 .ad-dimension-description {
@@ -179,6 +180,7 @@ button {
   font-size: 0.3em;
   color: #2f3e46;
   margin-left: 1em;
+  margin-top: 100px;
 }
 
 .unselectable {
