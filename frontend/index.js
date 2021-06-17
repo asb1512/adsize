@@ -343,7 +343,7 @@ function onPageLoad() {
       const dimenText = document.createElement('p')
       dimenText.setAttribute('class', 'ad-dimension-p')
       dimenText.innerHTML = `${dimen.width} x ${dimen.height}`
-      fitty(dimenText)
+      // fitty(dimenText)
 
       const dimenDescrip = document.createElement('p')
       dimenDescrip.setAttribute('class', 'ad-dimension-description')
