@@ -212,6 +212,11 @@ function onPageLoad() {
     notesAn.innerHTML = message
     notesSideBar.insertBefore(notesAn, newNoteAn)
 
+    notesAn.addEventListener("click", event => {
+      event.target.setAttribute('style', 'text-decoration: line-through;')
+      deleteListItem(event.target.id)
+    })
+
     const listItemsUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items`
 
     const configObj = {
@@ -227,6 +232,7 @@ function onPageLoad() {
     .then(resp => resp.json())
     .then(json => {
       notesAn.setAttribute('id', `${json.id}`)
+      currentUser.list.list_items.push(json)
     })
     .catch(error => {
       console.log(error)
