@@ -152,6 +152,15 @@ function onPageLoad() {
       })
     })
 
+    const updateCurrentUserObjDelete = listItemId => {
+      currentUser.list.list_items.forEach(e => {
+        let index = currentUser.list.list_items.indexOf(e)
+        if (e.id === listItemId) {
+          currentUser.list.list_items.splice(index, 1)
+        }
+      })
+    }
+
     // sends DELETE request to delete user's selected list item
     const deleteListItem = id => {
       const deleteListItemUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items/${id}`
@@ -165,6 +174,7 @@ function onPageLoad() {
         body: ""
       }
       
+      updateCurrentUserObjDelete(parseInt(id, 10))
       fetch(deleteListItemUrl, configObj)
     }
 
