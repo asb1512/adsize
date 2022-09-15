@@ -1,0 +1,23 @@
+{
+  "name": "ad-size",
+  "version": "1.0.0",
+  "description": "This app consists of a Rails 6 backend mated with a vanilla JavaScript frontend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asb1512/adsize.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asb1512/adsize/issues"
+  },
+  "homepage": "https://github.com/asb1512/adsize#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
