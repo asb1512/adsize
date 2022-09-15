@@ -1,3 +1,0 @@
-class AdDimensionsController < ApplicationController
-  
-end
