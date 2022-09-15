@@ -285,7 +285,6 @@ function onPageLoad() {
     thinNavBar.setAttribute('class', 'thin-nav-bar')
     body.insertBefore(thinNavBar, main)
     main.style.height = "90%"
-
     fetch(PLATFORMS_URL)
     .then(resp => resp.json())
     .then(json => {
