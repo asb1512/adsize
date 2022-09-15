@@ -14,7 +14,7 @@ class ListItemsController < ApplicationController
       list_item.destroy
       render status: 200
     else
-      render status: 400, message: "Request note does not exist."
+      render status: 400, message: "Requested note does not exist."
     end
   end
 end
