@@ -24,25 +24,25 @@ class User {
 let currentPlatform;
 let currentUser;
 
-const body = document.querySelector('body')
-const navBar = document.getElementsByClassName('nav-bar')[0]
-const notesSideBar = document.getElementsByClassName('sidenav')[0]
+const body = document.querySelector('body');
+const navBar = document.getElementsByClassName('nav-bar')[0];
+const notesSideBar = document.getElementsByClassName('sidenav')[0];
 const main = document.querySelector('main')
-const notesSignInMessage = document.getElementById('notes-signin-message')
+const notesSignInMessage = document.getElementById('notes-signin-message');
 
 const isEven = int => {
-  return (int % 2 === 0)
-}
+  return (int % 2 === 0);
+};
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "400px";
-}
+};
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-}
+};
 
-document.addEventListener('DOMContentLoaded', () => onPageLoad())
+document.addEventListener('DOMContentLoaded', () => onPageLoad());
 
 function onPageLoad() {
 
@@ -50,55 +50,55 @@ function onPageLoad() {
   const sleep = async (cbFunc, domElement, milliseconds) => {
     await new Promise(r => setTimeout(r, milliseconds))
     cbFunc(domElement, milliseconds)
-  }
+  };
 
   // allows elements to fade in after a specified period of time
   const fadeInXSec = async (parent, child, milliseconds) => {
     await new Promise(r => setTimeout(r, milliseconds));
     parent.appendChild(child)
-  }
+  };
 
   const removeFromDom = (domElement, milliseconds) => {
     domElement.remove()
-  }
+  };
 
 
   // adds logo to page
-  const adSizeLogo = document.createElement('img')
-  adSizeLogo.setAttribute('id', 'ad-size-logo')
-  adSizeLogo.setAttribute('class', 'fade-in')
-  adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png')
-  navBar.appendChild(adSizeLogo)
+  const adSizeLogo = document.createElement('img');
+  adSizeLogo.setAttribute('id', 'ad-size-logo');
+  adSizeLogo.setAttribute('class', 'fade-in');
+  adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png');
+  navBar.appendChild(adSizeLogo);
 
 
   // adds email label form and 'enter' button
-  const emailForm = document.createElement('form')
-  emailForm.setAttribute('class', 'email-form')
-  const emailLabel = document.createElement('label')
-  emailLabel.setAttribute('for', 'email-input')
-  const emailInput = document.createElement('input')
-  emailInput.setAttribute('id', 'email-input')
-  emailInput.setAttribute('placeholder', 'Enter your email')
-  emailInput.setAttribute('style', 'margin: 1em;')
-  const emailSubmitButton = document.createElement('button')
-  emailSubmitButton.setAttribute('id', 'email-form-button')
-  emailSubmitButton.setAttribute('class', 'platform-item')
-  emailSubmitButton.innerHTML = 'Submit'
+  const emailForm = document.createElement('form');
+  emailForm.setAttribute('class', 'email-form');
+  const emailLabel = document.createElement('label');
+  emailLabel.setAttribute('for', 'email-input');
+  const emailInput = document.createElement('input');
+  emailInput.setAttribute('id', 'email-input');
+  emailInput.setAttribute('placeholder', 'Enter your email');
+  emailInput.setAttribute('style', 'margin: 1em;');
+  const emailSubmitButton = document.createElement('button');
+  emailSubmitButton.setAttribute('id', 'email-form-button');
+  emailSubmitButton.setAttribute('class', 'platform-item');
+  emailSubmitButton.innerHTML = 'Submit';
 
 
   // adds event listener and prevents default form submission
   emailForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const inputText = document.getElementById('email-input')
-    regexEmail(inputText.value)
-  })
+    const inputText = document.getElementById('email-input');
+    regexEmail(inputText.value);
+  });
 
 
   // appending email entry form
-  navBar.appendChild(emailForm)
-  emailForm.appendChild(emailLabel)
-  emailForm.appendChild(emailInput)
-  emailForm.appendChild(emailSubmitButton)
+  navBar.appendChild(emailForm);
+  emailForm.appendChild(emailLabel);
+  emailForm.appendChild(emailInput);
+  emailForm.appendChild(emailSubmitButton);
 
   // handles email verification
   const verifyEmail = (email) => {
@@ -115,55 +115,55 @@ function onPageLoad() {
     fetch(USERS_URL, configObj)
     .then(resp => resp.json())
     .then(json => {
-      currentUser = new User(json.id, json.email, json.list)
-      displayUserList()
+      currentUser = new User(json.id, json.email, json.list);
+      displayUserList();
     })
     .catch(error => {
-      console.log(error)
-    })
-  }
+      console.log(error);
+    });
+  };
 
   // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
   const regexEmail = (email) => {
     const regex = new RegExp(/[@.]+/g)
     if (regex.test(email)) {
-      verifyEmail(email)
+      verifyEmail(email);
     } else {
-      alert('Please enter a valid email address.')
+      alert('Please enter a valid email address.');
     }
   }
 
   // displays all user's list items
   const displayUserList = () => {
-    emailForm.remove()
-    notesSignInMessage.remove()
-    openNav()
+    emailForm.remove();
+    notesSignInMessage.remove();
+    openNav();
     
     currentUser.list.list_items.forEach(item => {
-      const notesAn = document.createElement('a')
-      notesAn.setAttribute('id', `${item.id}`)
-      notesAn.setAttribute('href', '#')
-      notesAn.innerHTML = item.message
-      notesSideBar.appendChild(notesAn)
+      const notesAn = document.createElement('a');
+      notesAn.setAttribute('id', `${item.id}`);
+      notesAn.setAttribute('href', '#');
+      notesAn.innerHTML = item.message;
+      notesSideBar.appendChild(notesAn);
       // adds event listener to each list item anchor that is appended
       notesAn.addEventListener("click", event => {
-        event.target.setAttribute('style', 'text-decoration: line-through;')
-        deleteListItem(event.target.id)
-      })
-    })
+        event.target.setAttribute('style', 'text-decoration: line-through;');
+        deleteListItem(event.target.id);
+      });
+    });
 
     const updateCurrentUserObjDelete = listItemId => {
       currentUser.list.list_items.forEach(e => {
-        let index = currentUser.list.list_items.indexOf(e)
+        let index = currentUser.list.list_items.indexOf(e);
         if (e.id === listItemId) {
-          currentUser.list.list_items.splice(index, 1)
+          currentUser.list.list_items.splice(index, 1);
         }
       })
-    }
+    };
 
     // sends DELETE request to delete user's selected list item
     const deleteListItem = id => {
-      const deleteListItemUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items/${id}`
+      const deleteListItemUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items/${id}`;
 
       const configObj = {
         method: "DELETE",
