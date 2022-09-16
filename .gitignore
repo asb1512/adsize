@@ -22,3 +22,6 @@
 
 # Ignore internal notes
 notes.md
+
+# Ignore OS config
+.DS_Store
