@@ -7,12 +7,20 @@ body {
   top: 0;
   left: 0;
   margin: 0;
+  cursor: default;
 }
 
 main {
   margin-left: auto;
   margin-right: auto;
   height: 70%;
+}
+
+input {
+  padding: 0.5em 1em;
+  border: 10px solid #52796f;
+  font-family: 'Roboto Mono';
+  font-size: 0.2em;
 }
 
 button {
