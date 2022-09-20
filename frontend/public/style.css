@@ -28,6 +28,7 @@ button {
   font-size: 0.7em;
   width: fit-content;
   height: fit-content;
+  cursor: pointer;
 }
 
 .center {
@@ -214,6 +215,7 @@ button {
   text-align: center;
   margin-top: auto;
   margin-bottom: auto;
+  cursor: default;
  }
 
 #select-your-platform-div-2 {
@@ -262,7 +264,12 @@ button {
   transition: opacity 0.3 ease-in-out;
 }
 
+.platform-item {
+  transition: transform 500ms ease-in-out;
+}
+
 .platform-item:hover {
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  cursor: pointer;
 }
