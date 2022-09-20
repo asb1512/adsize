@@ -1,4 +1,3 @@
-const path = require('path');
 const BASE_URL = "http://localhost:3000";
 const PLATFORMS_URL = `${BASE_URL}/platforms`;
 const USERS_URL = `${BASE_URL}/users`;
@@ -31,31 +30,32 @@ const notesSideBar = document.getElementsByClassName('sidenav')[0];
 const main = document.querySelector('main')
 const notesSignInMessage = document.getElementById('notes-signin-message');
 
-const isEven = int => {
+const isEven = (int) => {
   return (int % 2 === 0);
 };
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "400px";
+  document.getElementById("mySidenav").style.width = '400px';
 };
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.width = '0';
 };
 
 document.addEventListener('DOMContentLoaded', () => onPageLoad());
 
 function onPageLoad() {
 
-  // takes a callback function and waits a specified amount of time to execute said function
+  // takes a callback function and waits a specified amount of time
+  // to execute said function
   const sleep = async (cbFunc, domElement, milliseconds) => {
-    await new Promise(r => setTimeout(r, milliseconds))
+    await new Promise((r) => setTimeout(r, milliseconds))
     cbFunc(domElement, milliseconds);
   };
 
   // allows elements to fade in after a specified period of time
   const fadeInXSec = async (parent, child, milliseconds) => {
-    await new Promise(r => setTimeout(r, milliseconds));
+    await new Promise((r) => setTimeout(r, milliseconds));
     parent.appendChild(child);
   };
 
