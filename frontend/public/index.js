@@ -20,6 +20,48 @@ class User {
   }
 }
 
+// instantiate FB ad platform
+const facebookPlatform = new Platform(1, 'Facebook', [
+  { name: 'Standard', width: 1200, height: 628 },
+  { name: 'Sponsored Message', width: 1080, height: 1080 },
+  { name: 'Standard Carousel', width: 1080, height: 1080 },
+]);
+allPlatforms.push(facebookPlatform);
+
+// instantiate Google ad platform
+const googlePlatform = new Platform(2, 'Google', [
+  { name: 'Small Square', width: 200, height: 200 },
+  { name: 'Vertical rectangle', width: 240, height: 400 },
+  { name: 'Square', width: 250, height: 250 },
+  { name: 'Triple Widescreen', width: 250, height: 360 },
+  { name: 'Inline Rectangle', width: 300, height: 250 },
+  { name: 'Large Rectangle', width: 336, height: 280 },
+  { name: 'Netboard', width: 580, height: 400 },
+  { name: 'Skyscraper', width: 120, height: 600 },
+  { name: 'Wide Skyscraper', width: 160, height: 600 },
+  { name: 'Half-Page Ad', width: 300, height: 600 },
+  { name: 'Portrait', width: 300, height: 1050 },
+  { name: 'Banner', width: 468, height: 60 },
+  { name: 'Leaderboard', width: 728, height: 90 },
+  { name: 'Top Banner', width: 930, height: 180 },
+  { name: 'Large Leaderboard', width: 970, height: 90 },
+  { name: 'Billboard', width: 970, height: 250 },
+  { name: 'Panorama', width: 980, height: 120 },
+  { name: 'Mobile Banner', width: 300, height: 50 },
+  { name: 'Mobile Banner V2', width: 320, height: 50 },
+  { name: 'Large Mobile Banner', width: 320, height: 100 },
+]);
+allPlatforms.push(googlePlatform);
+
+// instantiate Yahoo ad platform
+const yahooPlatform = new Platform(3, 'Yahoo', [
+  { name: 'Main Image', width: 1200, height: 627 },
+  { name: 'Icon Image', width: 82, height: 82 },
+  { name: 'Sponsor Marker - Small', width: 20, height: 20 },
+  { name: 'Sponsor Marker – Large', width: 40, height: 40 },
+]);
+allPlatforms.push(yahooPlatform);
+
 // allows an instance of a User or Platform to be assigned and accessed globally
 let currentPlatform;
 let currentUser;
@@ -68,7 +110,7 @@ function onPageLoad() {
   const adSizeLogo = document.createElement('img');
   adSizeLogo.setAttribute('id', 'ad-size-logo');
   adSizeLogo.setAttribute('class', 'fade-in');
-  adSizeLogo.setAttribute('src', 'images/AdSize-Logo.png');
+  adSizeLogo.setAttribute('src', 'AdSize-Logo.png');
   navBar.appendChild(adSizeLogo);
 
 
@@ -285,15 +327,9 @@ function onPageLoad() {
     body.insertBefore(thinNavBar, main);
     main.style.height = "90%";
 
-    fetch(PLATFORMS_URL)
-      .then(resp => resp.json())
-      .then(json => {
-        json.forEach(platform => {
-          currentPlatform = new Platform(platform.id, platform.name, platform.ad_dimensions);
-          allPlatforms.push(currentPlatform);
-          renderPlatform(currentPlatform);
-        });
-      });
+    for (const platform of allPlatforms) {
+      renderPlatform(platform);
+    }
   };
 
   const renderPlatform = (platform) => {
