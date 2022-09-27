@@ -1,5 +1,11 @@
+:root {
+  --light-green: #cad2c5;
+  --dark-green: #52796f;
+  --navy-blue: #2f3e46;
+}
+
 body {
-  background-color: #cad2c5;
+  background-color: var(--light-green);
   font-size: 100px;
   height: 100vh;
   width: 100vw;
@@ -18,20 +24,20 @@ main {
 
 input {
   padding: 0.5em 1em;
-  border: 10px solid #52796f;
+  border: 10px solid var(--dark-green);
   font-family: 'Roboto Mono';
   font-size: 0.2em;
 }
 
 button {
   width: 30%;
-  background-color: #cad2c5;
-  color: #52796f;
+  background-color: var(--light-green);
+  color: var(--dark-green);
   padding-right: 1em;
   padding-left: 1em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  border: 20px solid #ffffff;
+  border: 20px solid white;
   font-family: 'Roboto Mono', monospace;
   font-size: 0.7em;
   width: fit-content;
@@ -53,14 +59,14 @@ button {
 
 .thin-nav-bar {
   vertical-align: top;
-  background-color: #ffffff;
+  background-color: white;
   height: 3%;
 }
 
 .heading {
   font-family: 'Suranna', serif;
   font-size: 1.5em;
-  color: #2f3e46;
+  color: var(--navy-blue);
   margin: 0;
 }
 
@@ -71,7 +77,7 @@ button {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #ffffff;
+  background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -82,13 +88,13 @@ button {
   text-decoration: none;
   font-family: 'Roboto Mono', monospace;
   font-size: 25px;
-  color: #52796f;
+  color: var(--dark-green);
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #cad2c5;
+  color: var(--light-green);
 }
 
 .sidenav .closebtn {
@@ -103,16 +109,16 @@ button {
   right: 0;
   position: absolute;
   margin: 30px;
-  color: #52796f;
+  color: var(--dark-green);
 }
 
 .notes-header {
-  margin: 0px;
+  margin: 0;
   font-size: 95%;
   text-align: center;
   font-family: 'Suranna', serif;
   font-weight: normal;
-  color: #2f3e46;
+  color: var(--navy-blue);
   padding: 0;
 }
 
@@ -121,11 +127,11 @@ button {
   font-size: 0.5em;
   font-weight: normal;
   text-align: center;
-  color: #2f3e46;
+  color: var(--navy-blue);
 }
 
 #create-new-note:hover {
-  color: #52796f;
+  color: var(--dark-green);
 }
 
 #new-note-input {
@@ -148,14 +154,14 @@ button {
 
 .p-standard {
   margin: 0;
-  color: #2f3e46;
+  color: var(--navy-blue);
   font-family: 'Suranna', serif;
   font-size: 1.1em;
 }
 
 .p-alt {
   margin: 0;
-  color: #52796f;
+  color: var(--dark-green);
   font-family: 'Roboto Mono', monospace;
   font-size: 1.1em;
 }
@@ -164,15 +170,15 @@ button {
   display: block;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 0px;
+  padding-top: 0;
   padding-bottom: 50px;
 }
 
 .ad-dimension-div {
-  background-color: #ffffff;
+  background-color: white;
   display: table-cell;
   vertical-align: middle;
-  border: 1px solid #ffffff;
+  border: 1px solid white;
   border-radius: 15px;
 }
 
@@ -180,14 +186,14 @@ button {
   font-family: 'Roboto Mono', monospace;
   margin: auto;
   text-align: center;
-  color: #52796f;
+  color: var(--dark-green);
   font-size: 0.3em;
 }
 
 .ad-dimension-description {
   font-family: 'Suranna', serif;
   font-size: 0.3em;
-  color: #2f3e46;
+  color: var(--navy-blue);
   margin-left: 1em;
   margin-top: 100px;
 }
@@ -205,7 +211,7 @@ button {
   font-size: 0.2em;
   width: fit-content;
   height: fit-content;
-  border: 10px solid #ffffff;
+  border: 10px solid white;
 }
 
 #ad-size-logo {
