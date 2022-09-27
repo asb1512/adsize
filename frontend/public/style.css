@@ -27,6 +27,7 @@ input {
   border: 10px solid var(--dark-green);
   font-family: 'Roboto Mono';
   font-size: 0.2em;
+  color: var(--navy-blue);
 }
 
 button {
