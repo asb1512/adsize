@@ -108,25 +108,25 @@ function onPageLoad() {
 
   // adds logo to page
   const adSizeLogo = document.createElement('img');
-  adSizeLogo.setAttribute('id', 'ad-size-logo');
-  adSizeLogo.setAttribute('class', 'fade-in');
-  adSizeLogo.setAttribute('src', 'AdSize-Logo.png');
-  navBar.appendChild(adSizeLogo);
+    adSizeLogo.setAttribute('id', 'ad-size-logo');
+    adSizeLogo.setAttribute('class', 'fade-in');
+    adSizeLogo.setAttribute('src', 'AdSize-Logo.png');
+    navBar.appendChild(adSizeLogo);
 
 
   // adds email label form and 'enter' button
   const emailForm = document.createElement('form');
-  emailForm.setAttribute('class', 'email-form');
+    emailForm.setAttribute('class', 'email-form');
   const emailLabel = document.createElement('label');
-  emailLabel.setAttribute('for', 'email-input');
+    emailLabel.setAttribute('for', 'email-input');
   const emailInput = document.createElement('input');
-  emailInput.setAttribute('id', 'email-input');
-  emailInput.setAttribute('placeholder', 'Enter your email');
-  emailInput.setAttribute('style', 'margin: 1em;');
+    emailInput.setAttribute('id', 'email-input');
+    emailInput.setAttribute('placeholder', 'Enter your email');
+    emailInput.setAttribute('style', 'margin: 1em;');
   const emailSubmitButton = document.createElement('button');
-  emailSubmitButton.setAttribute('id', 'email-form-button');
-  emailSubmitButton.setAttribute('class', 'platform-item');
-  emailSubmitButton.innerHTML = 'Submit';
+    emailSubmitButton.setAttribute('id', 'email-form-button');
+    emailSubmitButton.setAttribute('class', 'platform-item');
+    emailSubmitButton.innerHTML = 'Submit';
 
 
   // adds event listener and prevents default form submission
@@ -183,10 +183,10 @@ function onPageLoad() {
 
     currentUser.list.list_items.forEach(item => {
       const notesAn = document.createElement('a');
-      notesAn.setAttribute('id', `${item.id}`);
-      notesAn.setAttribute('href', '#');
-      notesAn.innerHTML = item.message;
-      notesSideBar.appendChild(notesAn);
+        notesAn.setAttribute('id', `${item.id}`);
+        notesAn.setAttribute('href', '#');
+        notesAn.innerHTML = item.message;
+        notesSideBar.appendChild(notesAn);
       // adds event listener to each list item anchor that is appended
       notesAn.addEventListener("click", event => {
         event.target.setAttribute('style', 'text-decoration: line-through;');
