@@ -66,6 +66,19 @@ allPlatforms.push(yahooPlatform);
 let currentPlatform;
 let currentUser;
 
+// checks for user cookie
+const checkForUserCookie = () => {
+  const key = 'adSizeUid';
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${key}=`);
+  if (parts.length === 2) {
+    return parts.pop().split(';').shift();
+  } else {
+    return null;
+  }
+};
+const cookieCheckResult = checkForUserCookie();
+
 const body = document.querySelector('body');
 const navBar = document.getElementsByClassName('nav-bar')[0];
 const notesSideBar = document.getElementsByClassName('sidenav')[0];
@@ -114,73 +127,67 @@ function onPageLoad() {
     navBar.appendChild(adSizeLogo);
 
 
-  // adds email label form and 'enter' button
-  const emailForm = document.createElement('form');
+  // adds email label form and 'enter' button if no current user
+  const addEmailForm = () => {
+    const emailForm = document.createElement('form');
     emailForm.setAttribute('class', 'email-form');
-  const emailLabel = document.createElement('label');
+    const emailLabel = document.createElement('label');
     emailLabel.setAttribute('for', 'email-input');
-  const emailInput = document.createElement('input');
+    const emailInput = document.createElement('input');
     emailInput.setAttribute('id', 'email-input');
     emailInput.setAttribute('placeholder', 'Enter your email');
     emailInput.setAttribute('style', 'margin: 1em;');
-  const emailSubmitButton = document.createElement('button');
+    const emailSubmitButton = document.createElement('button');
     emailSubmitButton.setAttribute('id', 'email-form-button');
     emailSubmitButton.setAttribute('class', 'platform-item');
     emailSubmitButton.innerHTML = 'Submit';
-
-
-  // adds event listener and prevents default form submission
-  emailForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const inputText = document.getElementById('email-input');
-    regexEmail(inputText.value);
-  });
-
-
-  // appending email entry form
-  navBar.appendChild(emailForm);
-  emailForm.appendChild(emailLabel);
-  emailForm.appendChild(emailInput);
-  emailForm.appendChild(emailSubmitButton);
-
-  // handles email verification
-  const verifyEmail = (email) => {
-    const configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify({ email: email }),
-    }
-
-    fetch(USERS_URL, configObj)
-      .then(resp => resp.json())
-      .then(json => {
-        currentUser = new User(json.id, json.email, json.list);
-        displayUserList();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // adds event listener and prevents default form submission
+    emailForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const inputText = document.getElementById('email-input');
+      regexEmail(inputText.value);
+    });
+    // appending email entry form
+    navBar.appendChild(emailForm);
+    emailForm.appendChild(emailLabel);
+    emailForm.appendChild(emailInput);
+    emailForm.appendChild(emailSubmitButton);
   };
+
+  // adds a welcome user and retrieves stored notes
+  const addWelcomeMsg = (email) => {
+    const welcomeMsg = document.createElement('div');
+    welcomeMsg.setAttribute('class', 'welcome-msg');
+  };
+
+  // checks if a cookie was successfully retrieved
+  if (cookieCheckResult) {
+    // set welcome message text
+    // retrieve notes
+  } else {
+    addEmailForm();
+  }
 
   // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
   const regexEmail = (email) => {
     const regex = new RegExp(/[@.]+/g);
     if (regex.test(email)) {
-      verifyEmail(email);
+      createCookie(email);
     } else {
       alert('Please enter a valid email address.');
     }
   }
+
+  const createCookie = (email) => {
+    document.cookie = `adSizeUid=${email}`;
+  };
 
   // displays all user's list items
   const displayUserList = () => {
     emailForm.remove();
     notesSignInMessage.remove();
     openNav();
-
+    // switch this out for local storage
     currentUser.list.list_items.forEach(item => {
       const notesAn = document.createElement('a');
         notesAn.setAttribute('id', `${item.id}`);
