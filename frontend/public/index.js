@@ -1,24 +1,10 @@
-const BASE_URL = "http://localhost:3000";
-const PLATFORMS_URL = `${BASE_URL}/platforms`;
+import User from './user';
+import Platform from './platform';
+
+const BASE_URL = 'http://localhost:3000';
 const USERS_URL = `${BASE_URL}/users`;
 
 const allPlatforms = [];
-// classes
-class Platform {
-  constructor(id, name, adDimensions) {
-    this.id = id;
-    this.name = name;
-    this.adDimensions = adDimensions;
-  }
-}
-
-class User {
-  constructor(id, email, list) {
-    this.id = id;
-    this.email = email;
-    this.list = list;
-  }
-}
 
 // instantiate FB ad platform
 const facebookPlatform = new Platform(1, 'Facebook', [
@@ -73,16 +59,15 @@ const checkForUserCookie = () => {
   const parts = value.split(`; ${key}=`);
   if (parts.length === 2) {
     return parts.pop().split(';').shift();
-  } else {
-    return null;
   }
+  return null;
 };
 const cookieCheckResult = checkForUserCookie();
 
 const body = document.querySelector('body');
 const navBar = document.getElementsByClassName('nav-bar')[0];
 const notesSideBar = document.getElementsByClassName('sidenav')[0];
-const main = document.querySelector('main')
+const main = document.querySelector('main');
 const notesSignInMessage = document.getElementById('notes-signin-message');
 
 const isEven = (int) => {
@@ -91,20 +76,19 @@ const isEven = (int) => {
 
 function openNav() {
   document.getElementById("mySidenav").style.width = '400px';
-};
+}
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = '0';
-};
+}
 
 document.addEventListener('DOMContentLoaded', () => onPageLoad());
 
 function onPageLoad() {
-
   // takes a callback function and waits a specified amount of time
   // to execute said function
   const sleep = async (cbFunc, domElement, milliseconds) => {
-    await new Promise((r) => setTimeout(r, milliseconds))
+    await new Promise((r) => setTimeout(r, milliseconds));
     cbFunc(domElement, milliseconds);
   };
 
@@ -168,7 +152,12 @@ function onPageLoad() {
     addEmailForm();
   }
 
-  // runs Regex to verify that email isn't an empty string and that it containes essential characters i.e. '@' '.'
+  const createCookie = (email) => {
+    document.cookie = `adSizeUid=${email}`;
+  };
+
+  // runs Regex to verify that email isn't an empty string and that it containes
+  //  essential characters i.e. '@' '.'
   const regexEmail = (email) => {
     const regex = new RegExp(/[@.]+/g);
     if (regex.test(email)) {
@@ -176,10 +165,6 @@ function onPageLoad() {
     } else {
       alert('Please enter a valid email address.');
     }
-  }
-
-  const createCookie = (email) => {
-    document.cookie = `adSizeUid=${email}`;
   };
 
   // displays all user's list items
@@ -190,10 +175,10 @@ function onPageLoad() {
     // switch this out for local storage
     currentUser.list.list_items.forEach(item => {
       const notesAn = document.createElement('a');
-        notesAn.setAttribute('id', `${item.id}`);
-        notesAn.setAttribute('href', '#');
-        notesAn.innerHTML = item.message;
-        notesSideBar.appendChild(notesAn);
+      notesAn.setAttribute('id', `${item.id}`);
+      notesAn.setAttribute('href', '#');
+      notesAn.innerHTML = item.message;
+      notesSideBar.appendChild(notesAn);
       // adds event listener to each list item anchor that is appended
       notesAn.addEventListener("click", event => {
         event.target.setAttribute('style', 'text-decoration: line-through;');
@@ -211,21 +196,20 @@ function onPageLoad() {
     };
 
     // sends DELETE request to delete user's selected list item
-    const deleteListItem = id => {
+    const deleteListItem = (id) => {
       const deleteListItemUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items/${id}`;
 
       const configObj = {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: "",
+        body: '',
       };
 
       updateCurrentUserObjDelete(parseInt(id, 10));
       fetch(deleteListItemUrl, configObj);
-    }
+    };
 
     // creates 'Add new note' button
     const newNoteAn = document.createElement('a');
@@ -235,7 +219,7 @@ function onPageLoad() {
     notesSideBar.appendChild(newNoteAn);
 
     // listens for click on 'Add new note' anchor
-    newNoteAn.addEventListener("click", event => {
+    newNoteAn.addEventListener('click', (event) => {
       const newNoteDiv = document.createElement('div');
       newNoteDiv.setAttribute('id', 'new-note-div');
 
@@ -250,17 +234,17 @@ function onPageLoad() {
       notesSideBar.insertBefore(newNoteDiv, newNoteAn);
 
       // if user presses enter key, calls addNewUserNote()
-      newNoteInput.addEventListener("keyup", event => {
+      newNoteInput.addEventListener('keyup', (event) => {
         if (event.keyCode === 13) {
           event.preventDefault();
           addNewUserNote(event.target.value);
         }
       });
-    })
-  }
+    });
+  };
 
   // adds new user list item to user's list and POSTs to API
-  const addNewUserNote = message => {
+  const addNewUserNote = (message) => {
     const newNoteAn = document.getElementById('create-new-note');
     const newNoteDiv = document.getElementById('new-note-div');
     newNoteDiv.remove();
@@ -270,12 +254,13 @@ function onPageLoad() {
     notesAn.innerHTML = message;
     notesSideBar.insertBefore(notesAn, newNoteAn);
 
-    notesAn.addEventListener("click", event => {
+    notesAn.addEventListener('click', (event) => {
       event.target.setAttribute('style', 'text-decoration: line-through;');
       deleteListItem(event.target.id);
     });
 
-    const listItemsUrl = `${USERS_URL}/${currentUser.id}/lists/${currentUser.list.id}/list_items`;
+    const listItemsUrl = `${USERS_URL}/${currentUser.id}/lists/
+    ${currentUser.list.id}/list_items`;
 
     const configObj = {
       method: "POST",
@@ -376,8 +361,7 @@ function onPageLoad() {
   const loadAdDimensions = (a) => {
     const dimenMainDiv = document.createElement('div');
     dimenMainDiv.setAttribute('id', 'ad-dimensions-main-div');
-    a.adDimensions.forEach(dimen => {
-
+    a.adDimensions.forEach((dimen) => {
       const dimenDiv = document.createElement('div');
       dimenDiv.setAttribute('class', 'ad-dimension-div');
       dimenDiv.setAttribute('style', `width: ${dimen.width}px; height: ${dimen.height}px; background-color: #ffffff;`);
@@ -401,14 +385,14 @@ function onPageLoad() {
   };
 
   // Event Listeners
-  selectButton.addEventListener("mouseover", (event) => {
-    event.target.style.backgroundColor = "#52796f";
-    event.target.style.color = "#2f3e46";
+  selectButton.addEventListener('mouseover', (event) => {
+    event.target.style.backgroundColor = '#52796f';
+    event.target.style.color = '#2f3e46';
   }, false);
 
-  selectButton.addEventListener("mouseout", (event) => {
-    event.target.style.backgroundColor = "#cad2c5";
-    event.target.style.color = "#52796f";
+  selectButton.addEventListener('mouseout', (event) => {
+    event.target.style.backgroundColor = '#cad2c5';
+    event.target.style.color = '#52796f';
   }, false);
 
   const buttonClick = (event) => {
@@ -419,5 +403,5 @@ function onPageLoad() {
     loadPlatforms();
   };
 
-  selectButton.addEventListener("click", buttonClick);
+  selectButton.addEventListener('click', buttonClick);
 }
