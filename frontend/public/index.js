@@ -70,16 +70,14 @@ const notesSideBar = document.getElementsByClassName('sidenav')[0];
 const main = document.querySelector('main');
 const notesSignInMessage = document.getElementById('notes-signin-message');
 
-const isEven = (int) => {
-  return (int % 2 === 0);
-};
+const isEven = (int) => (int % 2 === 0);
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = '400px';
+  document.getElementById('mySidenav').style.width = '400px';
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = '0';
+  document.getElementById('mySidenav').style.width = '0';
 }
 
 document.addEventListener('DOMContentLoaded', () => onPageLoad());
@@ -102,14 +100,27 @@ function onPageLoad() {
     domElement.remove();
   };
 
-
   // adds logo to page
   const adSizeLogo = document.createElement('img');
-    adSizeLogo.setAttribute('id', 'ad-size-logo');
-    adSizeLogo.setAttribute('class', 'fade-in');
-    adSizeLogo.setAttribute('src', 'AdSize-Logo.png');
-    navBar.appendChild(adSizeLogo);
+  adSizeLogo.setAttribute('id', 'ad-size-logo');
+  adSizeLogo.setAttribute('class', 'fade-in');
+  adSizeLogo.setAttribute('src', 'AdSize-Logo.png');
+  navBar.appendChild(adSizeLogo);
 
+  const createCookie = (email) => {
+    document.cookie = `adSizeUid=${email}`;
+  };
+
+  // runs Regex to verify that email isn't an empty string and that it containes
+  //  essential characters i.e. '@' '.'
+  const regexEmail = (email) => {
+    const regex = new RegExp(/[@.]+/g);
+    if (regex.test(email)) {
+      createCookie(email);
+    } else {
+      alert('Please enter a valid email address.');
+    }
+  };
 
   // adds email label form and 'enter' button if no current user
   const addEmailForm = () => {
@@ -151,21 +162,6 @@ function onPageLoad() {
   } else {
     addEmailForm();
   }
-
-  const createCookie = (email) => {
-    document.cookie = `adSizeUid=${email}`;
-  };
-
-  // runs Regex to verify that email isn't an empty string and that it containes
-  //  essential characters i.e. '@' '.'
-  const regexEmail = (email) => {
-    const regex = new RegExp(/[@.]+/g);
-    if (regex.test(email)) {
-      createCookie(email);
-    } else {
-      alert('Please enter a valid email address.');
-    }
-  };
 
   // displays all user's list items
   const displayUserList = () => {
