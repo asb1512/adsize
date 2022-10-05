@@ -1,8 +1,13 @@
-import User from './user';
-import Platform from './platform';
-
 const BASE_URL = 'http://localhost:3000';
 const USERS_URL = `${BASE_URL}/users`;
+
+class Platform {
+  constructor(id, name, adDimensions) {
+    this.id = id;
+    this.name = name;
+    this.adDimensions = adDimensions;
+  }
+}
 
 const allPlatforms = [];
 
@@ -111,12 +116,20 @@ function onPageLoad() {
     document.cookie = `adSizeUid=${email}`;
   };
 
+  // adds a welcome user and retrieves stored notes
+  const addWelcomeMsg = (email) => {
+    const welcomeMsg = document.createElement('div');
+    welcomeMsg.setAttribute('class', 'welcome-msg');
+    welcomeMsg.innerHTML = `Welcome, ${email}`;
+  };
+
   // runs Regex to verify that email isn't an empty string and that it containes
   //  essential characters i.e. '@' '.'
   const regexEmail = (email) => {
     const regex = new RegExp(/[@.]+/g);
     if (regex.test(email)) {
       createCookie(email);
+      addWelcomeMsg(email);
     } else {
       alert('Please enter a valid email address.');
     }
@@ -137,7 +150,7 @@ function onPageLoad() {
     emailSubmitButton.setAttribute('class', 'platform-item');
     emailSubmitButton.innerHTML = 'Submit';
     // adds event listener and prevents default form submission
-    emailForm.addEventListener("submit", (event) => {
+    emailForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const inputText = document.getElementById('email-input');
       regexEmail(inputText.value);
@@ -149,15 +162,9 @@ function onPageLoad() {
     emailForm.appendChild(emailSubmitButton);
   };
 
-  // adds a welcome user and retrieves stored notes
-  const addWelcomeMsg = (email) => {
-    const welcomeMsg = document.createElement('div');
-    welcomeMsg.setAttribute('class', 'welcome-msg');
-  };
-
   // checks if a cookie was successfully retrieved
   if (cookieCheckResult) {
-    // set welcome message text
+    addWelcomeMsg(cookieCheckResult);
     // retrieve notes
   } else {
     addEmailForm();
