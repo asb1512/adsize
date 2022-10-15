@@ -1,7 +1,9 @@
-export default class User {
+class User {
   constructor(id, email, list) {
     this.id = id;
     this.email = email;
     this.list = list;
   }
 }
+
+module.exports = User;
