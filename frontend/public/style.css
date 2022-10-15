@@ -98,7 +98,7 @@ button {
   color: var(--light-green);
 }
 
-.sidenav .closebtn {
+.sidenav.closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -144,7 +144,7 @@ button {
   padding: 8px 8px 8px 38px;
 }
 
-.email-form {
+#email-form {
   margin: 0.3em;
   float: right;
 }
