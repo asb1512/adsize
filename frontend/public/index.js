@@ -119,8 +119,9 @@ function onPageLoad() {
   // adds a welcome user and retrieves stored notes
   const addWelcomeMsg = (email) => {
     const welcomeMsg = document.createElement('div');
-    welcomeMsg.setAttribute('class', 'welcome-msg');
+    welcomeMsg.setAttribute('id', 'welcome-msg');
     welcomeMsg.innerHTML = `Welcome, ${email}`;
+    navBar.appendChild(welcomeMsg);
   };
 
   // runs Regex to verify that email isn't an empty string and that it containes
@@ -129,6 +130,8 @@ function onPageLoad() {
     const regex = /[@.]+/g;
     if (regex.test(email)) {
       createCookie(email);
+      const emailForm = document.getElementById('email-form');
+      emailForm.remove();
       addWelcomeMsg(email);
     } else {
       alert('Please enter a valid email address.');
@@ -165,7 +168,7 @@ function onPageLoad() {
   // checks if a cookie was successfully retrieved
   if (cookieCheckResult) {
     addWelcomeMsg(cookieCheckResult);
-    console.log('successful cookieCheckResult');
+    console.log('successful cookieCheckResult', cookieCheckResult);
     // retrieve notes
   } else {
     addEmailForm();
