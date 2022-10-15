@@ -149,6 +149,14 @@ button {
   float: right;
 }
 
+#welcome-msg {
+  margin: 0.3em;
+  float: right;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.2em;
+  color: var(--dark-green);
+}
+
 .platform-list-item-div {
   height: 20%;
 }

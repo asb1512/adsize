@@ -126,7 +126,7 @@ function onPageLoad() {
   // runs Regex to verify that email isn't an empty string and that it containes
   //  essential characters i.e. '@' '.'
   const regexEmail = (email) => {
-    const regex = new RegExp(/[@.]+/g);
+    const regex = /[@.]+/g;
     if (regex.test(email)) {
       createCookie(email);
       addWelcomeMsg(email);
@@ -138,7 +138,7 @@ function onPageLoad() {
   // adds email label form and 'enter' button if no current user
   const addEmailForm = () => {
     const emailForm = document.createElement('form');
-    emailForm.setAttribute('class', 'email-form');
+    emailForm.setAttribute('id', 'email-form');
     const emailLabel = document.createElement('label');
     emailLabel.setAttribute('for', 'email-input');
     const emailInput = document.createElement('input');
@@ -165,6 +165,7 @@ function onPageLoad() {
   // checks if a cookie was successfully retrieved
   if (cookieCheckResult) {
     addWelcomeMsg(cookieCheckResult);
+    console.log('successful cookieCheckResult');
     // retrieve notes
   } else {
     addEmailForm();
@@ -172,6 +173,7 @@ function onPageLoad() {
 
   // displays all user's list items
   const displayUserList = () => {
+    const emailForm = document.getElementById('email-form');
     emailForm.remove();
     notesSignInMessage.remove();
     openNav();
