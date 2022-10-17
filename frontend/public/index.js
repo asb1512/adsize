@@ -70,7 +70,7 @@ const checkForUserCookie = () => {
 const cookieCheckResult = checkForUserCookie();
 
 const body = document.querySelector('body');
-const navBar = document.getElementsByClassName('nav-bar')[0];
+const navBar = document.getElementById('nav-bar');
 const notesSideBar = document.getElementsByClassName('sidenav')[0];
 const main = document.querySelector('main');
 const notesSignInMessage = document.getElementById('notes-signin-message');
@@ -78,11 +78,11 @@ const notesSignInMessage = document.getElementById('notes-signin-message');
 const isEven = (int) => (int % 2 === 0);
 
 function openNav() {
-  document.getElementById('mySidenav').style.width = '400px';
+  document.getElementById('sidenav').style.right = '0';
 }
 
 function closeNav() {
-  document.getElementById('mySidenav').style.width = '0';
+  document.getElementById('sidenav').style.right = '-30vw';
 }
 
 document.addEventListener('DOMContentLoaded', () => onPageLoad());
