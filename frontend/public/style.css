@@ -58,9 +58,10 @@ body {
 }
 
 main {
+  grid-column: 1;
   grid-row: 2;
-  margin-left: auto;
-  margin-right: auto;
+  justify-self: stretch;
+  align-self: stretch;
 }
 
 input {
@@ -86,6 +87,8 @@ button {
   height: fit-content;
   cursor: pointer;
 }
+
+button
 
 .center {
   display: flex;
@@ -244,22 +247,21 @@ button {
   border: 10px solid white;
 }
 
-#select-your-platform-div-1 {
+#select-your-platform-wrapper {
   width: auto;
-  height: 50%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #select-platform-prompt {
   text-align: center;
-  margin: auto;
   cursor: default;
   font-size: 20vmin;
   line-height: 15vmin;
  }
-
-#select-your-platform-div-2 {
-  height: 50%;
-}
 
 .fade-in {
   animation: fadeIn 1s;
