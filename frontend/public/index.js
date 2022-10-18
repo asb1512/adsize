@@ -69,6 +69,14 @@ const checkForUserCookie = () => {
 };
 const cookieCheckResult = checkForUserCookie();
 
+const addNotesMsg = () => {
+  const notesMsg = document.createElement('a');
+  notesMsg.setAttribute('id', 'notes-signin-msg');
+  notesMsg.innerHTML = 'Please login to view your notes.';
+  const sideNav = document.getElementById('sidenav');
+  sideNav.appendChild(notesMsg);
+};
+
 const body = document.querySelector('body');
 const navBar = document.getElementById('nav-bar');
 const notesSideBar = document.getElementsByClassName('sidenav')[0];
@@ -169,11 +177,11 @@ function onPageLoad() {
   if (cookieCheckResult) {
     addWelcomeMsg(cookieCheckResult);
     console.log('successful cookieCheckResult', cookieCheckResult);
-    // retrieve notes
+    // displayUserList();
   } else {
     addEmailForm();
+    addNotesMsg();
   }
-
   // displays all user's list items
   const displayUserList = () => {
     const emailForm = document.getElementById('email-form');
@@ -276,45 +284,37 @@ function onPageLoad() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ message: message }),
+      body: JSON.stringify({ message }),
     };
 
     fetch(listItemsUrl, configObj)
-      .then(resp => resp.json())
-      .then(json => {
+      .then((resp) => resp.json())
+      .then((json) => {
         notesAn.setAttribute('id', `${json.id}`);
         currentUser.list.list_items.push(json);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
 
-
   // adds 2 containers within main tag
-  const container1 = document.createElement('div');
-  container1.setAttribute('id', 'select-your-platform-div-1');
-  const container2 = document.createElement('div');
-  container2.setAttribute('id', 'select-your-platform-div-2');
-  container2.setAttribute('class', 'center');
-  main.appendChild(container1);
-  main.appendChild(container2);
-
+  const selectWrapper = document.createElement('div');
+  selectWrapper.setAttribute('id', 'select-your-platform-wrapper');
+  main.appendChild(selectWrapper);
 
   // adds 'Select your platform' prompt
   const selectPlatformPrompt = document.createElement('p');
   selectPlatformPrompt.setAttribute('id', 'select-platform-prompt');
   selectPlatformPrompt.setAttribute('class', 'heading center fade-in');
   selectPlatformPrompt.innerHTML = 'Select your platform:';
-  fadeInXSec(container1, selectPlatformPrompt, 1000);
-
+  fadeInXSec(selectWrapper, selectPlatformPrompt, 1000);
 
   // adds 'Select' button
   const selectButton = document.createElement('button');
   selectButton.setAttribute('class', 'button fade-in');
   selectButton.innerHTML = 'Show';
-  fadeInXSec(container2, selectButton, 2000);
-
+  fadeInXSec(selectWrapper, selectButton, 2000);
 
   // loads the platform page
   const loadPlatforms = () => {
@@ -325,7 +325,7 @@ function onPageLoad() {
     const thinNavBar = document.createElement('div');
     thinNavBar.setAttribute('class', 'thin-nav-bar');
     body.insertBefore(thinNavBar, main);
-    main.style.height = "90%";
+    main.style.height = '90%';
 
     for (const platform of allPlatforms) {
       renderPlatform(platform);
@@ -349,21 +349,20 @@ function onPageLoad() {
     main.appendChild(platformDiv);
     platformDiv.appendChild(platformA);
 
-    platformA.addEventListener("click", (event) => {
+    platformA.addEventListener('click', (event) => {
       const platformId = parseInt(event.target.id, 10);
-      allPlatforms.forEach(e => {
+      allPlatforms.forEach((e) => {
         if (platformId === e.id) {
           loadAdDimensions(e);
         }
         const platforms = document.getElementsByClassName('platform-list-item-div center');
-        for (const div of platforms) {
-          div.remove();
-        }
+        platforms.forEach((p) => {
+          p.remove();
+        });
         main.remove();
       });
     });
   };
-
 
   // loads ad dimensions for the parent platform
   const loadAdDimensions = (a) => {
@@ -406,8 +405,7 @@ function onPageLoad() {
   const buttonClick = (event) => {
     event.target.setAttribute('class', 'button fade-out');
     selectPlatformPrompt.setAttribute('class', 'heading fade-out');
-    sleep(removeFromDom, container1, 1000);
-    sleep(removeFromDom, container2, 1000);
+    sleep(removeFromDom, selectWrapper, 1000);
     loadPlatforms();
   };
 
